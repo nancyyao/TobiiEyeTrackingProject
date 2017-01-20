@@ -18,3 +18,23 @@ C:\Users\Master\Documents\Visual Studio 2015\Projects\TobiiTesting\TobiiTesting\
 C:\Users\Master\Documents\Visual Studio 2015\Projects\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.exe
 C:\Users\Master\Documents\Visual Studio 2015\Projects\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.pdb
 C:\Users\Master\Documents\Visual Studio 2015\Projects\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.csprojResolveAssemblyReference.cache
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\TobiiTesting.exe.config
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.exe
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.pdb
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\Tobii.EyeX.Client.dll
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\TobiiTesting.exe
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\TobiiTesting.pdb
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\EyeXFramework.dll
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\Tobii.EyeX.Client.Net20.dll
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\EyeXFramework.pdb
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\EyeXFramework.xml
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\bin\x86\Debug\Tobii.EyeX.Client.Net20.xml
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.csprojResolveAssemblyReference.cache
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\MainWindow.baml
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\App.g.cs
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting_Content.g.cs
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting_MarkupCompile.cache
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.g.resources
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.Properties.Resources.resources
+C:\Users\Master\Documents\GitHub\TobiiEyeTrackingProject\TobiiTesting\TobiiTesting\obj\x86\Debug\TobiiTesting.csproj.GenerateResource.Cache
