@@ -21,6 +21,8 @@ namespace TobiiTesting
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -28,6 +30,10 @@ namespace TobiiTesting
             InitializeComponent();
             Message = string.Empty;
         }
+
+        double p1Left = 100;
+        double p1Top = 50;
+        bool drag = false;
 
         public string Message { get; private set; }
 
@@ -41,7 +47,7 @@ namespace TobiiTesting
 
             var model = (MainWindowModel)DataContext;
             var hasGaze = textBlock.GetHasGaze();
-            model.NotifyInstructionHasGazeChanged(hasGaze);
+            //model.NotifyInstructionHasGazeChanged(hasGaze);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -60,7 +66,24 @@ namespace TobiiTesting
         private void Instruction_OnMouseEnter(object sender, MouseEventArgs e)
         {
             var model = (MainWindowModel)DataContext;
-            model.NotifyInstructionHasGazeChanged(true);
+           // model.NotifyInstructionHasGazeChanged(true);
+        }
+
+        private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            drag = !drag;
+        }
+        
+
+        private void StackPanel_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            StackPanel over = sender as StackPanel;
+            
+            if (drag)
+            {
+                Canvas.SetLeft(over, e.GetPosition(background).X - over.Width/2);
+                Canvas.SetTop(over, e.GetPosition(background).Y - over.Height/2);
+            }
         }
     }
 }
