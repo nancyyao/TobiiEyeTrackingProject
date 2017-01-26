@@ -31,8 +31,6 @@ namespace TobiiTesting
             Message = string.Empty;
         }
 
-        double p1Left = 100;
-        double p1Top = 50;
         bool drag = false;
 
         public string Message { get; private set; }
@@ -71,19 +69,31 @@ namespace TobiiTesting
 
         private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (!drag) {
+                Zarrange(sender as Rectangle);
+            }
             drag = !drag;
         }
         
 
         private void StackPanel_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            StackPanel over = sender as StackPanel;
+            Rectangle over = sender as Rectangle;
             
             if (drag)
             {
                 Canvas.SetLeft(over, e.GetPosition(background).X - over.Width/2);
                 Canvas.SetTop(over, e.GetPosition(background).Y - over.Height/2);
             }
+        }
+
+        private void Zarrange(Rectangle top) {
+            foreach (UIElement child in canvas.Children) {
+                if (Canvas.GetZIndex(child) > Canvas.GetZIndex(top)) {
+                    Canvas.SetZIndex(child, Canvas.GetZIndex(child) - 1);
+                }
+            }
+            Canvas.SetZIndex(top, canvas.Children.Count);
         }
     }
 }
