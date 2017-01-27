@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -123,10 +124,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bearbg.jpg" />
+    <Resource Include="Images\bearbg.jpg.jpg" />
+    <Resource Include="Images\five.jpg" />
+    <Resource Include="Images\four.jpeg" />
+    <Resource Include="Images\one.jpg" />
+    <Resource Include="Images\six.jpg" />
+    <Resource Include="Images\snakebg.jpg" />
+    <Resource Include="Images\three.jpg" />
+    <None Include="resource\bearbg.jpg.jpg" />
+    <None Include="resource\five.jpg" />
+    <None Include="resource\four.jpeg" />
+    <None Include="resource\one.jpg" />
+    <None Include="resource\six.jpg" />
+    <None Include="resource\snakebg.jpg" />
+    <None Include="resource\three.jpg" />
+    <None Include="resource\two.jpg" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\two.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

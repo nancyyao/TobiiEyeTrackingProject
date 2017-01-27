@@ -8,43 +8,53 @@
     <Window.Resources>
         <Style x:Key="EyeXGazeAwareElement" TargetType="FrameworkElement">
             <Setter Property="eyeX:Behavior.GazeAware" Value="True" />
-            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="250" />
+            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="50" />
         </Style>
 
         <Style x:Key="EyeXGazeAwarePanel" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="Rectangle">
             <Style.Triggers>
                 <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
-                    <Setter Property="Stroke" Value="Black" />
+                    <!--<Setter Property="Stroke" Value="Black" />-->
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="35" Color="Yellow" ShadowDepth="0"/>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
-
+    
     <Canvas Name="canvas">
-        <Rectangle StrokeThickness="10" Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle StrokeThickness="1" Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
+        <Rectangle StrokeThickness="1" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" 
+                   Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="20" Canvas.Top ="30" Stroke="Black">
            <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="Images/one.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="1" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle StrokeThickness="1" Panel.ZIndex="1" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" 
+                   Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="80" Canvas.Top ="260" Stroke="Black">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="Images/two.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="2" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle StrokeThickness="1" Panel.ZIndex="2" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" 
+                   Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="180" Canvas.Top ="200" Stroke="Black">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="Images/three.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="3" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle StrokeThickness="1" Panel.ZIndex="3" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" 
+                   Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="20" Canvas.Top ="400" Stroke="Black">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="Images/four.jpeg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle StrokeThickness="1" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" 
+                   Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="260" Canvas.Top ="380" Stroke="Black">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="Images/five.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
     </Canvas>
