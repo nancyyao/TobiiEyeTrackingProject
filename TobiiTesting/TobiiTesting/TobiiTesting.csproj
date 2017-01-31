@@ -124,25 +124,58 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\bearbg.jpg.jpg" />
-    <Resource Include="Images\five.jpg" />
-    <Resource Include="Images\four.jpeg" />
-    <Resource Include="Images\one.jpg" />
-    <Resource Include="Images\six.jpg" />
-    <Resource Include="Images\snakebg.jpg" />
-    <Resource Include="Images\three.jpg" />
-    <None Include="resource\bearbg.jpg.jpg" />
-    <None Include="resource\five.jpg" />
-    <None Include="resource\four.jpeg" />
-    <None Include="resource\one.jpg" />
-    <None Include="resource\six.jpg" />
-    <None Include="resource\snakebg.jpg" />
-    <None Include="resource\three.jpg" />
-    <None Include="resource\two.jpg" />
+    <Resource Include="five.jpg" />
+    <Resource Include="one.jpg" />
+    <Resource Include="six.jpg" />
+    <Resource Include="three.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy4.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy5.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy6.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy7.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy8.JPG" />
+    <None Include="resource\Leaves\Leaves\PoisonOak1.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak2.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak3.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak4.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak5.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak6.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak7.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonOak8.jpg" />
+    <None Include="resource\Leaves\Leaves\key.jpg" />
+    <None Include="resource\Leaves\Leaves\Other1.jpg" />
+    <None Include="resource\Leaves\Leaves\Other2.jpg" />
+    <None Include="resource\Leaves\Leaves\Other3.jpg" />
+    <None Include="resource\Leaves\Leaves\Other4.jpg" />
+    <None Include="resource\Leaves\Leaves\Other5.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy1.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy2.jpg" />
+    <None Include="resource\Leaves\Leaves\PoisonIvy3.jpg" />
+    <Resource Include="key.jpg" />
+    <Resource Include="Other1.jpg" />
+    <Resource Include="Other2.jpg" />
+    <Resource Include="Other3.jpg" />
+    <Resource Include="Other4.jpg" />
+    <Resource Include="Other5.jpg" />
+    <Resource Include="PoisonIvy1.jpg" />
+    <Resource Include="PoisonIvy3.jpg" />
+    <Resource Include="PoisonIvy4.jpg" />
+    <Resource Include="PoisonIvy5.jpg" />
+    <Resource Include="PoisonIvy6.jpg" />
+    <Resource Include="PoisonIvy7.jpg" />
+    <Resource Include="PoisonIvy8.JPG" />
+    <Resource Include="PoisonOak1.jpg" />
+    <Resource Include="PoisonOak3.jpg" />
+    <Resource Include="PoisonOak4.jpg" />
+    <Resource Include="PoisonOak5.jpg" />
+    <Resource Include="PoisonOak6.jpg" />
+    <Resource Include="PoisonOak7.jpg" />
+    <Resource Include="PoisonOak8.jpg" />
+    <Resource Include="PoisonIvy2.jpg" />
+    <Resource Include="PoisonOak2.jpg" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\two.jpg" />
+    <Resource Include="two.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

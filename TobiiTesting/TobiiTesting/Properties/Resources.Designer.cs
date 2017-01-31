@@ -63,9 +63,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bearbg_jpg {
+        internal static System.Drawing.Bitmap key {
             get {
-                object obj = ResourceManager.GetObject("bearbg_jpg", resourceCulture);
+                object obj = ResourceManager.GetObject("key", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap five {
+        internal static System.Drawing.Bitmap Other1 {
             get {
-                object obj = ResourceManager.GetObject("five", resourceCulture);
+                object obj = ResourceManager.GetObject("Other1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap four {
+        internal static System.Drawing.Bitmap Other2 {
             get {
-                object obj = ResourceManager.GetObject("four", resourceCulture);
+                object obj = ResourceManager.GetObject("Other2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap one {
+        internal static System.Drawing.Bitmap Other3 {
             get {
-                object obj = ResourceManager.GetObject("one", resourceCulture);
+                object obj = ResourceManager.GetObject("Other3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap six {
+        internal static System.Drawing.Bitmap Other4 {
             get {
-                object obj = ResourceManager.GetObject("six", resourceCulture);
+                object obj = ResourceManager.GetObject("Other4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap snakebg {
+        internal static System.Drawing.Bitmap Other5 {
             get {
-                object obj = ResourceManager.GetObject("snakebg", resourceCulture);
+                object obj = ResourceManager.GetObject("Other5", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap three {
+        internal static System.Drawing.Bitmap PoisonIvy1 {
             get {
-                object obj = ResourceManager.GetObject("three", resourceCulture);
+                object obj = ResourceManager.GetObject("PoisonIvy1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,149 @@ namespace TobiiTesting.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap two {
+        internal static System.Drawing.Bitmap PoisonIvy2 {
             get {
-                object obj = ResourceManager.GetObject("two", resourceCulture);
+                object obj = ResourceManager.GetObject("PoisonIvy2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy3 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy4 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy5 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy6 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy7 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonIvy8 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonIvy8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak1 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak2 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak3 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak4 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak5 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak6 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak7 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PoisonOak8 {
+            get {
+                object obj = ResourceManager.GetObject("PoisonOak8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
