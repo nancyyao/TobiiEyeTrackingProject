@@ -7,18 +7,23 @@
     <Window.Resources>
         <Style x:Key="EyeXGazeAwareElement" TargetType="FrameworkElement">
             <Setter Property="eyeX:Behavior.GazeAware" Value="True" />
-            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="250" />
+            <Setter Property="eyeX:Behavior.GazeAwareDelay" Value="50" />
         </Style>
 
         <Style x:Key="EyeXGazeAwarePanel" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="Rectangle">
             <Style.Triggers>
                 <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
-                    <Setter Property="Stroke" Value="Black" />
+                    <!--<Setter Property="Stroke" Value="Black" />-->
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="35" Color="Yellow" ShadowDepth="0"/>
+                        </Setter.Value>
+                    </Setter>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
-
+    
     <Canvas Name="canvas">
         <Rectangle StrokeThickness="10" Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
         <Line X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"></Line>
@@ -39,11 +44,6 @@
                 <ImageBrush ImageSource="three.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="A1" StrokeThickness="10" Panel.ZIndex="3" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="four.jpg"></ImageBrush>
-            </Rectangle.Fill>
-        </Rectangle>
         <Rectangle Name="A2" StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="five.jpg"></ImageBrush>
@@ -51,8 +51,8 @@
         </Rectangle>
         <Rectangle Name="A3" StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="six.jpg"></ImageBrush>
-            </Rectangle.Fill>
+                    <ImageBrush ImageSource="six.jpg"></ImageBrush>
+                </Rectangle.Fill>
         </Rectangle>
     </Canvas>
 </Window>

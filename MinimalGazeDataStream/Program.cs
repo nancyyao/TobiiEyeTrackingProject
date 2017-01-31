@@ -14,18 +14,12 @@ namespace MinimalGazeDataStream
         public static void Main(string[] args)
         {
             string datapoint;
-            string x;
-            string y;
             string time;
-            double seconds;
-            int recordEveryXTime = 15;
+            int recordEveryXTime = 15; //don't need to record every point...
             int recordEveryXTimeCounter = 0;
-            string filepath = "C:/Users/Master/Documents/GitHub/TobiiEyeTrackingProject/MinimalGazeDataStream/gazedata.txt";
+            string path = "C:/Users/Master/Documents/GitHub/TobiiEyeTrackingProject/datastreams/" + "A_"+DateTime.Now.ToString("MM-dd_hh-mm") + ".txt";
             using (var eyeXHost = new EyeXHost())
             {
-                System.IO.StreamWriter startfile = new System.IO.StreamWriter(filepath, true);
-                startfile.WriteLine("STARTING DATA RECORDING");
-                startfile.Close();
                 // Create a data stream: lightly filtered gaze point data.
                 // Other choices of data streams include EyePositionDataStream and FixationDataStream.
                 using (var lightlyFilteredGazeDataStream = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered))
@@ -36,19 +30,16 @@ namespace MinimalGazeDataStream
                     {
                         if ((recordEveryXTimeCounter % recordEveryXTime == 0))
                         {
-                            x = Convert.ToString(e.X);
-                            y = Convert.ToString(e.Y);
-                            seconds = e.Timestamp / 1000; //time in seconds
-                            time = Convert.ToString(seconds);
-                            Console.WriteLine("Gaze point at ({0:0.0}, {1:0.0}) @{2:0}", e.X, e.Y, e.Timestamp);
-                            datapoint = "Gaze point at (" + x + ", " + y + ") @" + time;
-                            System.IO.StreamWriter file = new System.IO.StreamWriter(filepath, true);
+                            // Convert ms to readable time format
+                            time = DateTime.Now.ToString("hh:mm:ss.fff");
+                            Console.WriteLine("Gaze point at ({0:0.00}, {1:0.00}) @ {2:0}", e.X, e.Y, time);
+                            datapoint = string.Format("Gaze point at ({0:0.00}, {1:0.00}) @ {2:0}", e.X, e.Y, time) + "\n";
+                            System.IO.StreamWriter file = new System.IO.StreamWriter(path, true);
                             file.WriteLine(datapoint);
                             file.Close();
                         }
                         recordEveryXTimeCounter++;
                     };
-
                     // Let it run until a key is pressed.
                     Console.WriteLine("Listening for gaze data, press any key to exit...");
                     Console.In.Read();
