@@ -69,7 +69,7 @@ namespace TobiiTesting
                 if (Canvas.GetTop(obj) > 500) {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        if (obj.Name.Substring(0, 1).CompareTo("A") == 0)
                         {
                             score++;
                         }
@@ -80,13 +80,13 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        if (obj.Name.Substring(0, 1).CompareTo("B") == 0)
                         {
-                            score--;
+                            score++;
                         }
                         else
                         {
-                            score++;
+                            score--;
                         }
                     }
                 }
