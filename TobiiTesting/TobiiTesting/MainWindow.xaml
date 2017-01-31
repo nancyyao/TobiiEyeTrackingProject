@@ -2,7 +2,6 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:eyeX="clr-namespace:EyeXFramework.Wpf;assembly=EyeXFramework"
-        KeyDown="Window_KeyDown"
         Title="MainWindow" Height="700" Width="800" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -22,29 +21,37 @@
 
     <Canvas Name="canvas">
         <Rectangle StrokeThickness="10" Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Line X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"></Line>
+        <Line X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="2"></Line>
+        <TextBlock Name="scr" Canvas.Left="700" Canvas.Top="30" HorizontalAlignment="Center" FontSize="40">0</TextBlock>
+        <Rectangle Name="B1" StrokeThickness="10" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
            <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="one.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="1" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="B2" StrokeThickness="10" Panel.ZIndex="1" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="two.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="2" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="B3" StrokeThickness="10" Panel.ZIndex="2" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="three.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="3" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="A1" StrokeThickness="10" Panel.ZIndex="3" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="four.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="A2" StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="bearbg.jpg"></ImageBrush>
+                <ImageBrush ImageSource="five.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="A3" StrokeThickness="10" Panel.ZIndex="4" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="six.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
     </Canvas>

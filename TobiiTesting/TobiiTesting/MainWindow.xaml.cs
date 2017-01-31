@@ -32,45 +32,65 @@ namespace TobiiTesting
         }
 
         bool drag = false;
+        int score = 0;
 
         public string Message { get; private set; }
 
         /// <summary>
         /// Handler for Behavior.HasGazeChanged events for the instruction text block.
         /// </summary>
-        private void Instruction_OnHasGazeChanged(object sender, RoutedEventArgs e)
-        {
-            var textBlock = e.Source as TextBlock;
-            if (null == textBlock) { return; }
-
-            var model = (MainWindowModel)DataContext;
-            var hasGaze = textBlock.GetHasGaze();
-            //model.NotifyInstructionHasGazeChanged(hasGaze);
-        }
-
-        private void Window_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Q)
-            {
-                Close();
-            }
-            else if (e.Key == Key.C)
-            {
-                var model = (MainWindowModel)DataContext;
-                model.CloseInstruction();
-            }
-        }
-
-        private void Instruction_OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            var model = (MainWindowModel)DataContext;
-           // model.NotifyInstructionHasGazeChanged(true);
-        }
 
         private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!drag) {
-                Zarrange(sender as Rectangle);
+            Rectangle obj = sender as Rectangle;
+            if (!drag)
+            {
+                Zarrange(obj);
+                if (Canvas.GetTop(obj) > 500)
+                {
+                    if (Canvas.GetLeft(obj) < 700)
+                    {
+                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        {
+                            score--;
+                        }
+                    }
+                    else
+                    {
+                        if (obj.Name.Substring(0, 1).CompareTo("B") != 1)
+                        {
+                            score--;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Canvas.GetTop(obj) > 500) {
+                    if (Canvas.GetLeft(obj) < 700)
+                    {
+                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        {
+                            score++;
+                        }
+                        else
+                        {
+                            score--;
+                        }
+                    }
+                    else
+                    {
+                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        {
+                            score--;
+                        }
+                        else
+                        {
+                            score++;
+                        }
+                    }
+                }
+                scr.Text = score.ToString();
             }
             drag = !drag;
         }

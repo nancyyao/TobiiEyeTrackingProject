@@ -123,10 +123,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bearbg.jpg" />
+    <Resource Include="five.jpg" />
+    <Resource Include="four.jpg" />
+    <Resource Include="one.jpg" />
+    <Resource Include="six.jpg" />
+    <Resource Include="three.jpg" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="two.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
