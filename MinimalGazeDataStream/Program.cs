@@ -31,9 +31,7 @@ namespace MinimalGazeDataStream
                         if ((recordEveryXTimeCounter % recordEveryXTime == 0))
                         {
                             // Convert ms to readable time format
-                            TimeSpan t = TimeSpan.FromMilliseconds(e.Timestamp);
-                            time = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
-                                                    t.Hours, t.Minutes, t.Seconds, t.Milliseconds);
+                            time = DateTime.Now.ToString("hh:mm:ss.fff");
                             Console.WriteLine("Gaze point at ({0:0.00}, {1:0.00}) @ {2:0}", e.X, e.Y, time);
                             datapoint = string.Format("Gaze point at ({0:0.00}, {1:0.00}) @ {2:0}", e.X, e.Y, time) + "\n";
                             System.IO.StreamWriter file = new System.IO.StreamWriter(path, true);
