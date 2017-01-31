@@ -30,7 +30,7 @@
         <Rectangle StrokeThickness="10" Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
         <Line X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"></Line>
         <Line X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="2"></Line>
-        <TextBlock Name="scr" Canvas.Left="700" Canvas.Top="30" HorizontalAlignment="Center" FontSize="40">0</TextBlock>
+        <TextBlock Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
         <Rectangle Name="A1" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>

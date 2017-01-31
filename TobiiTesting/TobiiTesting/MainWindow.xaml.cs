@@ -126,7 +126,7 @@ namespace TobiiTesting
                         }
                     }
                 }
-                scr.Text = score.ToString();
+                scr.Text = "Score: " + score;
             }
             drag = !drag;
         }
