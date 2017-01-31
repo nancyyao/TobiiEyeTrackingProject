@@ -66,9 +66,15 @@ namespace TobiiTesting
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             dispatcherTimer.Start();
         }
-
+        
         bool drag = false;
+        bool firstClick = true;
         int score = 0;
+        int endscore = 0;
+        int lastTime = DateTime.Now.TimeOfDay.Seconds;
+        int workTime = 0;
+        double startX;
+        double startY;
 
         public string Message { get; private set; }
 
@@ -78,10 +84,16 @@ namespace TobiiTesting
 
         private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (firstClick) {
+                firstClick = false;
+                
+            }
             Rectangle obj = sender as Rectangle;
             if (!drag)
             {
                 Zarrange(obj);
+                startX = Canvas.GetLeft(obj);
+                startY = Canvas.GetTop(obj);
                 if (Canvas.GetTop(obj) > 500)
                 {
                     if (Canvas.GetLeft(obj) < 700)
@@ -89,6 +101,7 @@ namespace TobiiTesting
                         if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
                         {
                             score--;
+                            endscore--;
                         }
                     }
                     else
@@ -96,6 +109,7 @@ namespace TobiiTesting
                         if (obj.Name.Substring(0, 1).CompareTo("B") != 1)
                         {
                             score--;
+                            endscore--;
                         }
                     }
                 }
@@ -108,9 +122,12 @@ namespace TobiiTesting
                         if (obj.Name.Substring(0, 1).CompareTo("A") == 0)
                         {
                             score++;
+                            endscore++;
                         }
                         else
                         {
+                            Canvas.SetLeft(obj, startX);
+                            Canvas.SetTop(obj, startY);
                             score--;
                         }
                     }
@@ -119,9 +136,12 @@ namespace TobiiTesting
                         if (obj.Name.Substring(0, 1).CompareTo("B") == 0)
                         {
                             score++;
+                            endscore++;
                         }
                         else
                         {
+                            Canvas.SetLeft(obj, startX);
+                            Canvas.SetTop(obj, startY);
                             score--;
                         }
                     }
@@ -152,7 +172,25 @@ namespace TobiiTesting
             Canvas.SetZIndex(top, canvas.Children.Count);
         }
 
-
+        void updateWorkTime() {
+            if (DateTime.Now.TimeOfDay.Seconds != lastTime & !firstClick & endscore < 16)
+            {
+                lastTime = DateTime.Now.TimeOfDay.Seconds;
+                workTime++;
+            }
+            if (workTime % 60 < 10)
+            {
+                time.Text = "Time: " + workTime / 60 + ":0" + workTime % 60;
+            }
+            else
+            {
+                time.Text = "Time: " + workTime / 60 + ":" + workTime % 60;
+            }
+            if (endscore == 16)
+            {
+                finish.Text = "Done";
+            }
+        }
 
 
 
@@ -177,6 +215,8 @@ namespace TobiiTesting
             // Invoke thread
             //Console.WriteLine(System.Windows.Forms.Control.MousePosition.ToString());
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(cards_arr)));
+
+            updateWorkTime();
         }
         private void UpdateUI(int[] cards)
         {

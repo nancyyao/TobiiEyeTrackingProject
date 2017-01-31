@@ -18,7 +18,7 @@
                     <!--<Setter Property="Stroke" Value="Black" />-->
                     <Setter Property="Effect">
                         <Setter.Value>
-                            <DropShadowEffect BlurRadius="35" Color="Yellow" ShadowDepth="0"/>
+                            <DropShadowEffect BlurRadius="35" Color="CornflowerBlue" ShadowDepth="0"/>
                         </Setter.Value>
                     </Setter>
                 </Trigger>
@@ -31,6 +31,8 @@
         <Line X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"></Line>
         <Line X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="2"></Line>
         <TextBlock Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
+        <TextBlock Name="time" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
+        <TextBlock Name="finish" Canvas.Top="300" FontSize="60" Canvas.Left="500" HorizontalAlignment="Center"></TextBlock>
         <Rectangle Name="A1" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>
