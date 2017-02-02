@@ -44,8 +44,8 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
         private static string defaultSenderIP = "129.105.146.201"; //The default IP for sending messages.
-                                                                  //SenderIP = "169.254.50.139"; //seahorse laptop.//SenderIP = "169.254.41.115"; //Jellyfish laptop
-        // private static int x_received, y_received;
+                                                                   //SenderIP = 129.105.146.201, 10.105.91.168
+                                                                   // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
         private Regex r = new Regex(IPpat, RegexOptions.IgnoreCase);//regular expression variable
         private static string NumPat = @"(\d+)\s+";
@@ -53,8 +53,10 @@ namespace TobiiTesting
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
         private static int[] cards_arr;
         private static int[] received_cards_arr = {2,3,4,5,6};
-        private static String sending = "wow";
-        private static String received = "nah";
+        private static String sending;
+        private static String received;
+
+        int left_coord, top_coord, start_ind, middle_ind;
 
         //UI
         bool drag = false; //True when card is being moved
@@ -83,7 +85,6 @@ namespace TobiiTesting
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
-            dispatcherTimer.Start();
             shuffleCards();
 
             cards_arr = new int[5] {6,7,8,9,10};
@@ -137,6 +138,8 @@ namespace TobiiTesting
         {
             if (firstClick) {
                 firstClick = false;
+                dispatcherTimer.Start();
+
             }
             Rectangle obj = sender as Rectangle;
             lastClicked = obj;
@@ -246,9 +249,8 @@ namespace TobiiTesting
         void update(object sender, EventArgs e) //sender/receiver
         {
             if (!firstClick) {
-                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + ":" + Canvas.GetTop(lastClicked).ToString();
+                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString();
             }
-
 
             //If user pressed Receiver or Cursor button but communication haven't started yet or has terminated, start a thread on tryCommunicateReceiver()
             if (ReceiverOn && communication_started_Receiver == false)
@@ -269,9 +271,19 @@ namespace TobiiTesting
             //Console.WriteLine(System.Windows.Forms.Control.MousePosition.ToString());
             Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(sending)));
 
+            if (received != null) {
+                Console.WriteLine(received);
+                test.Text = received.ToString();
+                Rectangle partnerClicked = FindName(received.Substring(0, 4)) as Rectangle;
+                start_ind = received.IndexOf(":");
+                middle_ind = received.IndexOf("|");
+                left_coord = Convert.ToInt32(received.Substring(start_ind + 1, middle_ind - start_ind - 1));
+                top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, received.Length - middle_ind - 1));
+                Canvas.SetLeft(partnerClicked,  left_coord);
+                Canvas.SetTop(partnerClicked, top_coord);
+            }
 
             updateWorkTime();
-            test.Text = received.ToString();
         }
         private void UpdateUI(String cards)
         {
