@@ -28,8 +28,8 @@
     
     <Canvas Name="canvas">
         <Rectangle  Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
-        <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="2"></Line>
-        <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="2"></Line>
+        <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="3"></Line>
+        <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="3"></Line>
         <TextBlock Panel.ZIndex="51" Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
         <TextBlock Panel.ZIndex="52" Name="time" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
         

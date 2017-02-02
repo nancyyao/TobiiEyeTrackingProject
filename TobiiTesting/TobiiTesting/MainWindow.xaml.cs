@@ -53,6 +53,20 @@ namespace TobiiTesting
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
         private static int[] cards_arr;
         private static int[] received_cards_arr;
+
+        //UI
+        bool drag = false; //True when card is being moved
+        int score = 0;
+        int endscore = 0;
+        //Timer
+        int lastTime = DateTime.Now.TimeOfDay.Seconds;
+        bool firstClick = true;
+        int workTime = 0;
+        //Set cards as fish or leaves: f for fish, l for leaves
+        String set = "l";
+        //Keeps track of original card position
+        double startX;
+        double startY;
         #endregion
 
         public MainWindow()
@@ -67,20 +81,6 @@ namespace TobiiTesting
             dispatcherTimer.Start();
             shuffleCards();
         }
-        
-        bool drag = false;
-        bool firstClick = true;
-        int score = 0;
-        int endscore = 0;
-        int lastTime = DateTime.Now.TimeOfDay.Seconds;
-        int workTime = 0;
-
-        //set cards as fish or leaves: f for fish, l for leaves
-        String set = "f";
-
-        //Keeps track of original card position
-        double startX;
-        double startY;
 
         public string Message { get; private set; }
 
@@ -180,7 +180,6 @@ namespace TobiiTesting
             drag = !drag;
         }
         
-
         private void StackPanel_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             Rectangle over = sender as Rectangle;
@@ -221,10 +220,7 @@ namespace TobiiTesting
                 Canvas.SetZIndex(background, 0);
             }
         }
-
-
-
-
+        
         void update(object sender, EventArgs e) //sender/receiver
         {
             //If user pressed Receiver or Cursor button but communication haven't started yet or has terminated, start a thread on tryCommunicateReceiver()
