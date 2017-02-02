@@ -65,6 +65,7 @@ namespace TobiiTesting
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             dispatcherTimer.Start();
+            shuffleCards();
         }
         
         bool drag = false;
@@ -73,14 +74,42 @@ namespace TobiiTesting
         int endscore = 0;
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         int workTime = 0;
+
+        //set cards as fish or leaves: f for fish, l for leaves
+        String set = "f";
+
+        //Keeps track of original card position
         double startX;
         double startY;
 
         public string Message { get; private set; }
 
-        /// <summary>
-        /// Handler for Behavior.HasGazeChanged events for the instruction text block.
-        /// </summary>
+        private void shuffleCards() {
+            Random rand = new Random();
+            Rectangle rect;
+            bool left = true;
+            foreach (UIElement child in canvas.Children)
+            {
+                if (Canvas.GetZIndex(child) < 50) {
+                    rect = child as Rectangle;
+                    Canvas.SetTop(rect,200);
+                    Canvas.SetZIndex(rect, rand.Next(20));
+                    if (left & rect.Name.Substring(0, 1).CompareTo(set) == 0)
+                    {
+                        Canvas.SetLeft(rect, 225);
+                    }
+                    else if (rect.Name.Substring(0, 1).CompareTo(set) == 0)
+                    {
+                        Canvas.SetLeft(rect, 1000);
+                    }
+                    else
+                    {
+                        Canvas.SetLeft(rect, -200);
+                    }
+                    left = !left;
+                }
+            }
+        }
 
         private void StackPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -98,7 +127,7 @@ namespace TobiiTesting
                 {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("A") == 1)
+                        if (obj.Name.Substring(1,1).CompareTo("A") == 1)
                         {
                             score--;
                             endscore--;
@@ -106,7 +135,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("B") != 1)
+                        if (obj.Name.Substring(1,1).CompareTo("B") != 1)
                         {
                             score--;
                             endscore--;
@@ -119,7 +148,7 @@ namespace TobiiTesting
                 if (Canvas.GetTop(obj) > 500) {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("A") == 0)
+                        if (obj.Name.Substring(1, 1).CompareTo("A") == 0)
                         {
                             score++;
                             endscore++;
@@ -133,7 +162,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(0, 1).CompareTo("B") == 0)
+                        if (obj.Name.Substring(1,1).CompareTo("B") == 0)
                         {
                             score++;
                             endscore++;
@@ -188,7 +217,8 @@ namespace TobiiTesting
             }
             if (endscore == 16)
             {
-                finish.Text = "Done";
+                background.Fill = new SolidColorBrush(System.Windows.Media.Colors.LimeGreen);
+                Canvas.SetZIndex(background, 0);
             }
         }
 
