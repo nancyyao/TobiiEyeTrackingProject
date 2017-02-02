@@ -32,7 +32,10 @@
         <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="3"></Line>
         <TextBlock Panel.ZIndex="51" Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
         <TextBlock Panel.ZIndex="52" Name="time" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
-        
+
+        <TextBlock Panel.ZIndex="53" Name="Receive_Status_Text" Canvas.Right="30" Canvas.Top="30" MaxWidth="266.67" Text="Receiving Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
+        <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
+
         <Rectangle Name="lA1" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>

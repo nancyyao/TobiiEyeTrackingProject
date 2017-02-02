@@ -35,15 +35,15 @@ namespace TobiiTesting
     {
         #region Variables
         //send/receive
-        private bool SenderOn = false;
-        private bool ReceiverOn = false;
+        private bool SenderOn = true;
+        private bool ReceiverOn = true;
         private static int ReceiverPort = 11000, SenderPort = 11000;//ReceiverPort is the port used by Receiver, SenderPort is the port used by Sender
         private bool communication_started_Receiver = false;//indicates whether the Receiver is ready to receive message(coordinates). Used for thread control
         private bool communication_started_Sender = false;//Indicate whether the program is sending its coordinates to others. Used for thread control
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "169.254.50.139"; //The default IP for sending messages.
+        private static string defaultSenderIP = "165.124.145.2"; //The default IP for sending messages.
                                                                   //SenderIP = "169.254.50.139"; //seahorse laptop.//SenderIP = "169.254.41.115"; //Jellyfish laptop
         // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -80,6 +80,21 @@ namespace TobiiTesting
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             dispatcherTimer.Start();
             shuffleCards();
+
+            if (ReceiverOn)
+            {
+                IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
+                IPAddress ipAddress = ipHostInfo.AddressList[0];
+                Receive_Status_Text.Text = "Receiving Data\nIP:" + ipAddress.ToString();
+                Receive_Status_Text.Visibility = Visibility.Visible;
+            }
+            if (SenderOn)
+            {
+                SenderIP = defaultSenderIP;
+                Share_Status_Text.Text = "Sharing Data\nIP:" + SenderIP.ToString();
+                Share_Status_Text.Visibility = Visibility.Visible;
+                communication_started_Sender = false;
+            }
         }
 
         public string Message { get; private set; }
