@@ -43,7 +43,7 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "165.124.145.2"; //The default IP for sending messages.
+        private static string defaultSenderIP = "129.105.146.201"; //The default IP for sending messages.
                                                                   //SenderIP = "169.254.50.139"; //seahorse laptop.//SenderIP = "169.254.41.115"; //Jellyfish laptop
         // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -52,7 +52,9 @@ namespace TobiiTesting
         private Regex regex_num = new Regex(NumPat, RegexOptions.IgnoreCase);
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
         private static int[] cards_arr;
-        private static int[] received_cards_arr;
+        private static int[] received_cards_arr = {2,3,4,5,6};
+        private static String sending = "wow";
+        private static String received = "nah";
 
         //UI
         bool drag = false; //True when card is being moved
@@ -63,10 +65,13 @@ namespace TobiiTesting
         bool firstClick = true;
         int workTime = 0;
         //Set cards as fish or leaves: f for fish, l for leaves
-        String set = "l";
+        String set = "1";
         //Keeps track of original card position
         double startX;
         double startY;
+
+
+        Rectangle lastClicked;
         #endregion
 
         public MainWindow()
@@ -80,6 +85,8 @@ namespace TobiiTesting
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             dispatcherTimer.Start();
             shuffleCards();
+
+            cards_arr = new int[5] {6,7,8,9,10};
 
             if (ReceiverOn)
             {
@@ -109,11 +116,11 @@ namespace TobiiTesting
                     rect = child as Rectangle;
                     Canvas.SetTop(rect,200);
                     Canvas.SetZIndex(rect, rand.Next(20));
-                    if (left & rect.Name.Substring(0, 1).CompareTo(set) == 0)
+                    if (left & rect.Name.Substring(1, 1).CompareTo(set) == 1)
                     {
                         Canvas.SetLeft(rect, 225);
                     }
-                    else if (rect.Name.Substring(0, 1).CompareTo(set) == 0)
+                    else if (rect.Name.Substring(1, 1).CompareTo(set) == 1)
                     {
                         Canvas.SetLeft(rect, 1000);
                     }
@@ -130,9 +137,9 @@ namespace TobiiTesting
         {
             if (firstClick) {
                 firstClick = false;
-                
             }
             Rectangle obj = sender as Rectangle;
+            lastClicked = obj;
             if (!drag)
             {
                 Zarrange(obj);
@@ -142,7 +149,7 @@ namespace TobiiTesting
                 {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(1,1).CompareTo("A") == 1)
+                        if (obj.Name.Substring(2,1).CompareTo("1") == 1)
                         {
                             score--;
                             endscore--;
@@ -150,7 +157,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(1,1).CompareTo("B") != 1)
+                        if (obj.Name.Substring(2,1).CompareTo("2") != 1)
                         {
                             score--;
                             endscore--;
@@ -163,7 +170,7 @@ namespace TobiiTesting
                 if (Canvas.GetTop(obj) > 500) {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(1, 1).CompareTo("A") == 0)
+                        if (obj.Name.Substring(2, 1).CompareTo("1") == 0)
                         {
                             score++;
                             endscore++;
@@ -177,7 +184,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(1,1).CompareTo("B") == 0)
+                        if (obj.Name.Substring(2,1).CompareTo("2") == 0)
                         {
                             score++;
                             endscore++;
@@ -238,11 +245,16 @@ namespace TobiiTesting
         
         void update(object sender, EventArgs e) //sender/receiver
         {
+            if (!firstClick) {
+                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + ":" + Canvas.GetTop(lastClicked).ToString();
+            }
+
+
             //If user pressed Receiver or Cursor button but communication haven't started yet or has terminated, start a thread on tryCommunicateReceiver()
             if (ReceiverOn && communication_started_Receiver == false)
             {
                 communication_started_Receiver = true;
-                communicateThread_Receiver = new System.Threading.Thread(new ThreadStart(() => tryCommunicateReceiver(cards_arr)));
+                communicateThread_Receiver = new System.Threading.Thread(new ThreadStart(() => tryCommunicateReceiver(sending)));
                 communicateThread_Receiver.Start();
             }
 
@@ -250,93 +262,31 @@ namespace TobiiTesting
             if (SenderOn && communication_started_Sender == false)
             {
                 communication_started_Sender = true;
-                communicateThread_Sender = new System.Threading.Thread(new ThreadStart(() => tryCommunicateSender(cards_arr)));
+                communicateThread_Sender = new System.Threading.Thread(new ThreadStart(() => tryCommunicateSender(sending)));
                 communicateThread_Sender.Start();
             }
             // Invoke thread
             //Console.WriteLine(System.Windows.Forms.Control.MousePosition.ToString());
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(cards_arr)));
+            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(sending)));
+
 
             updateWorkTime();
+            test.Text = received.ToString();
         }
-        private void UpdateUI(int[] cards)
+        private void UpdateUI(String cards)
         {
-            int x;
-            int y;
-            if (ReceiverOn)
-            {
-                for (int i = 0; i < cards.Length; i += 2)
-                {
-                    x = cards[i];
-                    y = cards[i + 1];
-                    //set positions of boxes 0 to i!
-                }
-            }
+            //int x;
+            //int y;
+            //if (ReceiverOn)
+            //{
+            //    for (int i = 0; i < received_cards_arr.Length-1; i += 2)
+            //    {
+            //        x = received_cards_arr[i];
+            //        y = received_cards_arr[i + 1];
+            //        //set positions of boxes 0 to i!
+            //    }
+            //}
         }
-        //private void ExecuteSelectedButton(string selectedButtonName)
-        //{
-        //    if (selectedButtonName == null) return;
-        //    switch (selectedButtonName)
-        //    {
-        //        case "Receive":  //receive from other computer
-        //            ReceiverOn = !ReceiverOn;
-        //            if (ReceiverOn)
-        //            {
-        //                IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
-        //                IPAddress ipAddress = ipHostInfo.AddressList[0];
-        //                Receive_Text.Text = "Receiver On\nIP:" + ipAddress.ToString();
-        //                Receive_Status_Text.Text = "Receiving Data\nIP:" + ipAddress.ToString();
-        //                Receive_Status_Text.Visibility = Visibility.Visible;
-        //                //Receiver_Pop.IsOpen = true;
-        //                //Receiver_Pop_TextBox.Text = "Please enter your IP address";
-        //                //Receiver_Pop_TextBox.SelectAll();
-        //            }
-        //            else
-        //            {
-        //                Receive_Text.Text = "Receive Off";
-        //                Receive_Status_Text.Visibility = Visibility.Hidden;
-        //                //if wrap below???
-        //                ReceiverIP = "";
-        //                try
-        //                {
-        //                    communicateThread_Receiver.Abort();
-
-        //                }
-        //                catch (Exception e)
-        //                {
-        //                    Console.WriteLine(e.ToString());
-        //                }
-        //                communication_started_Receiver = false;
-        //            }
-        //            break;
-        //        case "Share": //send to other computer
-        //            SenderOn = !SenderOn;
-        //            if (SenderOn)
-        //            {
-        //               // Share_Text.Text = "Share On";
-        //                SenderIP = defaultSenderIP;
-        //                Share_Status_Text.Text = "Sharing Data\nIP:" + SenderIP.ToString();
-        //                Share_Status_Text.Visibility = Visibility.Visible;
-        //                communication_started_Sender = false;
-        //            }
-        //            else
-        //            {
-        //               // Share_Text.Text = "Share Off";
-        //                SenderIP = "";
-        //                Share_Status_Text.Visibility = Visibility.Hidden;
-        //                try
-        //                {
-        //                    communicateThread_Sender.Abort();
-        //                }
-        //                catch (Exception e)
-        //                {
-        //                    Console.WriteLine(e.ToString());
-        //                }
-        //                communication_started_Sender = false;
-        //            }
-        //            break;
-        //    }
-        //}
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -356,7 +306,7 @@ namespace TobiiTesting
         }
 
         #region Sender/Receiver Methods
-        public void tryCommunicateReceiver(int[] x)
+        public void tryCommunicateReceiver(String x)
         {
             IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
             ReceiverIP = ipHostInfo.AddressList[0].ToString();
@@ -367,7 +317,7 @@ namespace TobiiTesting
             }
             AsynchronousSocketListener.StartListening();
         }
-        public void tryCommunicateSender(int[] x)
+        public void tryCommunicateSender(String x)
         {
             while (SenderIP == "")
             {
@@ -495,7 +445,9 @@ namespace TobiiTesting
                                 // x_received = Convert.ToInt32(content.Substring(x_start_ind + 3, x_end_ind - (x_start_ind + 3)));
                                 // y_received = Convert.ToInt32(content.Substring(y_start_ind + 3, y_end_ind - (y_start_ind + 3)));
                                 string s = content.Substring(x_start_ind + 3, x_end_ind - (x_start_ind + 3));
-                                received_cards_arr = s.Split(',').Select(str => int.Parse(str)).ToArray(); ;
+                                //received_cards_arr = s.Split(',').Select(str => int.Parse(str)).ToArray(); ;
+                                // received = Convert.ToInt32(content.Substring(x_start_ind + 3, x_end_ind - (x_start_ind + 3)));
+                                received = s;
                             }
                             catch (FormatException)
                             {
@@ -556,7 +508,7 @@ namespace TobiiTesting
         public class SynchronousClient
         {
 
-            public static void StartClient(int[] x)
+            public static void StartClient(String x)
             {
                 // Data buffer for incoming data.
                 byte[] bytes = new byte[1024];
@@ -625,83 +577,7 @@ namespace TobiiTesting
 
             public static string data = null;
 
-            //public static void StartListening()
-            //{
-            //    // Data buffer for incoming data.
-            //    byte[] bytes = new Byte[1024];
-
-            //    // Establish the local endpoint for the socket.
-            //    // Dns.GetHostName returns the name of the 
-            //    // host running the application.
-            //    IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
-            //    IPAddress ipAddress = IPAddress.Parse(SenderIP);
-            //    IPEndPoint localEndPoint = new IPEndPoint(ipAddress, SenderPort);
-
-            //    // Create a TCP/IP socket.
-            //    Socket listener = new Socket(AddressFamily.InterNetwork,
-            //        SocketType.Stream, ProtocolType.Tcp);
-
-            //    // Bind the socket to the local endpoint and 
-            //    // listen for incoming connections.
-            //    try
-            //    {
-            //        listener.Bind(localEndPoint);
-            //        listener.Listen(10);
-
-            //        // Start listening for connections.
-            //        while (true)
-            //        {
-            //            Console.WriteLine("Waiting for a connection...");
-            //            // Program is suspended while waiting for an incoming connection.
-            //            Socket handler = listener.Accept();
-            //            data = null;
-
-            //            // An incoming connection needs to be processed.
-            //            while (true)
-            //            {
-            //                bytes = new byte[1024];
-            //                int bytesRec = handler.Receive(bytes);
-            //                data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-            //                if (data.IndexOf("<EOF>") > -1)
-            //                {
-            //                    break;
-            //                }
-            //            }
-            //            int x_start_ind = data.IndexOf("x: "), x_end_ind = data.IndexOf("xend ");
-            //            //int y_start_ind = data.IndexOf("y: "), y_end_ind = data.IndexOf("yend ");
-            //            //int cursor_x_start_ind = data.IndexOf("cursorx: "), cursor_x_end_ind = data.IndexOf("cursorxend ");
-            //            //int cursor_y_start_ind = data.IndexOf("cursory: "), cursor_y_end_ind = data.IndexOf("cursoryend ");
-            //            if (x_start_ind > -1 && x_end_ind > -1)
-            //            {
-            //                try
-            //                {
-            //                    //x_received = Convert.ToInt32(data.Substring(x_start_ind + 2, x_end_ind - 1));
-            //                    //y_received = Convert.ToInt32(data.Substring(y_start_ind + 2, y_end_ind - 1));
-            //                }
-            //                catch (FormatException)
-            //                {
-            //                    Console.WriteLine("Input string is not a sequence of digits.");
-            //                }
-            //                catch (OverflowException)
-            //                {
-            //                    Console.WriteLine("The number cannot fit in an Int32.");
-            //                }
-            //            }                        
-            //            // Echo the data back to the client.
-            //            byte[] msg = Encoding.ASCII.GetBytes(data);
-
-            //            handler.Send(msg);
-            //            handler.Shutdown(SocketShutdown.Both);
-            //            handler.Close();
-            //        }
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        Console.WriteLine(e.ToString());
-            //    }
-            //    Console.WriteLine("\nPress ENTER to continue...");
-            //    Console.Read();
-            //}
+            
         }
         #endregion
     }
