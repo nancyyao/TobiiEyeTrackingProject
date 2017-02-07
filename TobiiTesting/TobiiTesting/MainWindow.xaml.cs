@@ -43,7 +43,7 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "129.105.146.201"; //The default IP for sending messages.
+        private static string defaultSenderIP = "10.105.91.168"; //The default IP for sending messages.
                                                                    //SenderIP = 129.105.146.201, 10.105.91.168
                                                                    // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -93,13 +93,13 @@ namespace TobiiTesting
             {
                 IPHostEntry ipHostInfo = Dns.GetHostByName(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
-                Receive_Status_Text.Text = "Receiving Data\nIP:" + ipAddress.ToString();
+                Receive_Status_Text.Text = "Receiving Data at\nIP:" + ipAddress.ToString();
                 Receive_Status_Text.Visibility = Visibility.Visible;
             }
             if (SenderOn)
             {
                 SenderIP = defaultSenderIP;
-                Share_Status_Text.Text = "Sharing Data\nIP:" + SenderIP.ToString();
+                Share_Status_Text.Text = "Sharing Data to\nIP:" + SenderIP.ToString();
                 Share_Status_Text.Visibility = Visibility.Visible;
                 communication_started_Sender = false;
             }
@@ -269,7 +269,7 @@ namespace TobiiTesting
             }
             // Invoke thread
             //Console.WriteLine(System.Windows.Forms.Control.MousePosition.ToString());
-            Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(sending)));
+            //Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Normal, new Action(() => UpdateUI(sending)));
 
             if (received != null) {
                 Console.WriteLine(received);
@@ -285,21 +285,6 @@ namespace TobiiTesting
 
             updateWorkTime();
         }
-        private void UpdateUI(String cards)
-        {
-            //int x;
-            //int y;
-            //if (ReceiverOn)
-            //{
-            //    for (int i = 0; i < received_cards_arr.Length-1; i += 2)
-            //    {
-            //        x = received_cards_arr[i];
-            //        y = received_cards_arr[i + 1];
-            //        //set positions of boxes 0 to i!
-            //    }
-            //}
-        }
-
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             //CleanUp();

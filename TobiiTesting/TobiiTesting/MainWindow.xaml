@@ -35,6 +35,8 @@
         <TextBlock Panel.ZIndex="66" Name="test" Canvas.Left="500" Canvas.Top="500"></TextBlock>
         <TextBlock Panel.ZIndex="53" Name="Receive_Status_Text" Canvas.Right="30" Canvas.Top="30" MaxWidth="266.67" Text="Receiving Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
         <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
+        <TextBlock Panel.ZIndex="54" Name="CategoryA" Canvas.Left="30" Canvas.Top="470" FontSize="18">Category A</TextBlock>
+        <TextBlock Panel.ZIndex="54" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category B</TextBlock>
 
         <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
@@ -141,7 +143,6 @@
                 <ImageBrush ImageSource="Other5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        
         <Rectangle Name="x211" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Butterflyfish1.jpg"></ImageBrush>
