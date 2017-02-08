@@ -16,6 +16,7 @@ namespace TobiiTesting
     {
         // Keep a reference to the host so it's not garbage collected.
         private WpfEyeXHost _eyeXHost;
+        public ResourceDictionary dict;
         public App ()
         {
             _eyeXHost = new WpfEyeXHost();
@@ -26,6 +27,7 @@ namespace TobiiTesting
             base.OnExit(e);
             _eyeXHost.Dispose(); // always dispose on exit
         }
+
 
     }
 }

@@ -30,7 +30,7 @@ namespace TobiiTesting
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     /// 
-
+    
     public partial class MainWindow : Window
     {
         #region Variables
@@ -43,7 +43,7 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "10.105.91.168"; //The default IP for sending messages.
+        private static string defaultSenderIP = "129.105.146.121"; //The default IP for sending messages.
                                                                    //SenderIP = 129.105.146.201, 10.105.91.168
                                                                    // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -66,12 +66,18 @@ namespace TobiiTesting
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         bool firstClick = true;
         int workTime = 0;
-        //Set cards as fish or leaves: f for fish, l for leaves
-        String set = "1";
+        //Set cards as fish or leaves: x2 for fish, x1 for leaves
+        String set = "x2";
         //Keeps track of original card position
         double startX;
         double startY;
 
+        Point dot = new Point();
+        double fixationStart = 0;
+        bool fixStart = true;
+        int trackerIndex = 0;
+
+        EyeXHost eyeXHost = new EyeXHost();
 
         Rectangle lastClicked;
         #endregion
@@ -81,10 +87,17 @@ namespace TobiiTesting
             InitializeComponent();
             Message = string.Empty;
 
+            eyeXHost.Start();
+            //var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
+            var fixationData = eyeXHost.CreateFixationDataStream(FixationDataMode.Sensitive);
+            fixationData.Next += fixTrack;
+            //gazeData.Next += trackDot;
+
             //  DispatcherTimer setup
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
+            dispatcherTimer.Start();
             shuffleCards();
 
             cards_arr = new int[5] {6,7,8,9,10};
@@ -105,31 +118,45 @@ namespace TobiiTesting
             }
         }
 
+        private void fixTrack(object s, EyeXFramework.FixationEventArgs e)
+        {
+            if (e.EventType == FixationDataEventType.Begin)
+            {
+                fixationStart = e.Timestamp;
+            }
+            double fixationtime = e.Timestamp - fixationStart;
+            if (fixationtime > 1000 & fixStart) {
+                dot = new Point(e.X,e.Y);
+                trackerIndex = (trackerIndex + 1) % 2;
+                fixStart = false;
+            }
+
+            if (e.EventType == FixationDataEventType.End)
+            {
+                fixStart = true;
+            }
+        }
+
+        private void trackDot(object s, EyeXFramework.GazePointEventArgs e)
+        {
+            //dot = new Point(e.X, e.Y);
+        }
+
         public string Message { get; private set; }
 
+        
+
         private void shuffleCards() {
-            Random rand = new Random();
             Rectangle rect;
-            bool left = true;
             foreach (UIElement child in canvas.Children)
             {
                 if (Canvas.GetZIndex(child) < 50) {
                     rect = child as Rectangle;
-                    Canvas.SetTop(rect,200);
-                    Canvas.SetZIndex(rect, rand.Next(20));
-                    if (left & rect.Name.Substring(1, 1).CompareTo(set) == 1)
+                    if (rect.Name.Substring(0, 2).CompareTo(set) != 0)
                     {
-                        Canvas.SetLeft(rect, 225);
-                    }
-                    else if (rect.Name.Substring(1, 1).CompareTo(set) == 1)
-                    {
-                        Canvas.SetLeft(rect, 1000);
-                    }
-                    else
-                    {
+                        Canvas.SetTop(rect, -200);
                         Canvas.SetLeft(rect, -200);
                     }
-                    left = !left;
                 }
             }
         }
@@ -138,7 +165,7 @@ namespace TobiiTesting
         {
             if (firstClick) {
                 firstClick = false;
-                dispatcherTimer.Start();
+                
 
             }
             Rectangle obj = sender as Rectangle;
@@ -218,7 +245,7 @@ namespace TobiiTesting
 
         private void Zarrange(Rectangle top) {
             foreach (UIElement child in canvas.Children) {
-                if (Canvas.GetZIndex(child) > Canvas.GetZIndex(top)) {
+                if (Canvas.GetZIndex(child) > Canvas.GetZIndex(top) & child is Rectangle) {
                     Canvas.SetZIndex(child, Canvas.GetZIndex(child) - 1);
                 }
             }
@@ -281,6 +308,21 @@ namespace TobiiTesting
                 top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, received.Length - middle_ind - 1));
                 Canvas.SetLeft(partnerClicked,  left_coord);
                 Canvas.SetTop(partnerClicked, top_coord);
+            }
+
+            Ellipse tracker = FindName("track" + trackerIndex.ToString()) as Ellipse;
+            Canvas.SetLeft(tracker, dot.X);
+            Canvas.SetTop(tracker, dot.Y);
+
+            if (trackerIndex == 0)
+            {
+                trackLine.X1 = dot.X + 10;
+                trackLine.Y1 = dot.Y + 10;
+            }
+            else
+            {
+                trackLine.X2 = dot.X + 10;
+                trackLine.Y2 = dot.Y + 10;
             }
 
             updateWorkTime();

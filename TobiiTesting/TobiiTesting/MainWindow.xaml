@@ -27,28 +27,31 @@
     </Window.Resources>
     
     <Canvas Name="canvas">
+        <Ellipse Name="track0" Opacity=".5" Panel.ZIndex="60" Fill="Black" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0"></Ellipse>
+        <Ellipse Name="track1" Opacity=".5" Panel.ZIndex="60" Fill="Black" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0"></Ellipse>
+        <Line Name="trackLine" Panel.ZIndex="60" Stroke="Black" StrokeThickness="1" X1="0" X2="0" Y1="0" Y2="0"></Line>
         <Rectangle  Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
         <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="3"></Line>
         <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="3"></Line>
         <TextBlock Panel.ZIndex="51" Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
         <TextBlock Panel.ZIndex="52" Name="time" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
-        <TextBlock Panel.ZIndex="66" Name="test" Canvas.Left="500" Canvas.Top="500"></TextBlock>
+        <TextBlock Panel.ZIndex="59" Name="test" Canvas.Left="500" Canvas.Top="500"></TextBlock>
         <TextBlock Panel.ZIndex="53" Name="Receive_Status_Text" Canvas.Right="30" Canvas.Top="30" MaxWidth="266.67" Text="Receiving Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
         <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
         <TextBlock Panel.ZIndex="54" Name="CategoryA" Canvas.Left="30" Canvas.Top="470" FontSize="18">Category A</TextBlock>
         <TextBlock Panel.ZIndex="54" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category B</TextBlock>
 
-        <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="0" Canvas.Top ="0">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x112" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x112" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="150" Canvas.Top ="0">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x113" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x113" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="0" Canvas.Top ="160">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy3.jpg"></ImageBrush>
             </Rectangle.Fill>
@@ -78,12 +81,12 @@
                 <ImageBrush ImageSource="PoisonIvy8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x121" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x121" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="300" Canvas.Top ="0">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonOak1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x122" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x122" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="300" Canvas.Top ="160">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonOak2.jpg"></ImageBrush>
             </Rectangle.Fill>
@@ -98,7 +101,7 @@
                 <ImageBrush ImageSource="PoisonOak4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x125" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="200">
+        <Rectangle Name="x125" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="150" Canvas.Top ="160">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonOak5.jpg"></ImageBrush>
             </Rectangle.Fill>
@@ -118,17 +121,17 @@
                 <ImageBrush ImageSource="PoisonOak8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x131" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="400" Canvas.Top ="200">
+        <Rectangle Name="x131" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="450" Canvas.Top ="0">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Other1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x132" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="400" Canvas.Top ="200">
+        <Rectangle Name="x132" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="450" Canvas.Top ="160">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Other2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x133" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="400" Canvas.Top ="200">
+        <Rectangle Name="x133" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="0" Canvas.Top ="320">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Other3.jpg"></ImageBrush>
             </Rectangle.Fill>
@@ -138,7 +141,7 @@
                 <ImageBrush ImageSource="Other4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle Name="x135" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="400" Canvas.Top ="200">
+        <Rectangle Name="x135" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="150" Canvas.Top ="320">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Other5.jpg"></ImageBrush>
             </Rectangle.Fill>
