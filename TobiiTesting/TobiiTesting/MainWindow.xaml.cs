@@ -43,7 +43,7 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "129.105.146.121"; //The default IP for sending messages.
+        private static string defaultSenderIP = "10.105.132.82"; //The default IP for sending messages.
                                                                    //SenderIP = 129.105.146.201, 10.105.91.168
                                                                    // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
@@ -72,7 +72,7 @@ namespace TobiiTesting
         double startX;
         double startY;
 
-        Point dot = new Point();
+        Point dot = new Point(0,0);
         double fixationStart = 0;
         bool fixStart = true;
         bool fixShift = false;
@@ -80,6 +80,7 @@ namespace TobiiTesting
         EyeXHost eyeXHost = new EyeXHost();
 
         Rectangle lastClicked;
+        private bool highlightVis = false; //set before running; if true: show highlight visualization; if false: show fixation visualization
         #endregion
 
         public MainWindow()
@@ -87,6 +88,16 @@ namespace TobiiTesting
             DataContext = this;
             InitializeComponent();
             Message = string.Empty;
+
+            //set up correct visualization
+            highlight = highlightVis;
+            if (highlight)
+            {
+                VisSwitchButton.Content = "Switch to fixation";
+            } else
+            {
+                VisSwitchButton.Content = "Switch to highlight";
+            }
 
             eyeXHost.Start();
             //var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
@@ -98,7 +109,6 @@ namespace TobiiTesting
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
-
             shuffleCards();
 
             if (ReceiverOn)
@@ -116,7 +126,6 @@ namespace TobiiTesting
                 communication_started_Sender = false;
             }
         }
-
         private void fixTrack(object s, EyeXFramework.FixationEventArgs e)
         {
             if (e.EventType == FixationDataEventType.Begin)
@@ -146,24 +155,54 @@ namespace TobiiTesting
         #region gaze sharing on/off
         public event PropertyChangedEventHandler PropertyChanged = delegate { };
         public bool gazeSharing { get; set; }
+        public bool highlight { get; set; }
         private void gazeButton(object sender, RoutedEventArgs e)
         {
             gazeSharing = !gazeSharing;
             OnPropertyChanged("gazeSharing");
             if (gazeSharing)
             {
-                //make fixation spots visible
-                Button.Content = "Turn off gaze";
+                GazeSwitchButton.Content = "Turn off gaze";
+                if (!highlightVis) //fixation visualization, show it
+                {
+                    track0.Visibility = Visibility.Visible;
+                    track1.Visibility = Visibility.Visible;
+                    trackLine.Visibility = Visibility.Visible;
+                }
             }
             else
             {
-                //make fixation spots hidden
-                Button.Content = "Show gaze";
+                GazeSwitchButton.Content = "Show gaze";
+                if (!highlightVis) //fixation visualization, hide it
+                {
+                    track0.Visibility = Visibility.Hidden;
+                    track1.Visibility = Visibility.Hidden;
+                    trackLine.Visibility = Visibility.Hidden;
+                }
             }
         }
         protected void OnPropertyChanged(string property)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
+        private void visButton(object sender, RoutedEventArgs e)
+        {
+            highlightVis = !highlightVis;
+            highlight = highlightVis;
+            if (highlightVis)
+            {
+                VisSwitchButton.Content = "Switch to fixation";
+                track0.Visibility = Visibility.Hidden;
+                track1.Visibility = Visibility.Hidden;
+                trackLine.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                VisSwitchButton.Content = "Switch to highlight";
+                track0.Visibility = Visibility.Visible;
+                track1.Visibility = Visibility.Visible;
+                trackLine.Visibility = Visibility.Visible;
+            }
         }
         #endregion
 
@@ -355,6 +394,9 @@ namespace TobiiTesting
             //CleanUp();
             SenderOn = false;
             ReceiverOn = false;
+            communication_started_Receiver = false;
+            communication_started_Sender = false;
+            dispatcherTimer.Stop();
             try
             {
                 communicateThread_Receiver.Abort();
@@ -385,7 +427,7 @@ namespace TobiiTesting
             {
                 System.Threading.Thread.Sleep(1000);
             }
-            SynchronousClient.StartClient(x);
+            SynchronousClient.StartClient(x); //start sending info
             communication_started_Sender = false;
 
             //AsynchronousSocketListener.StartListening();
