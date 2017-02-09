@@ -67,7 +67,7 @@ namespace TobiiTesting
         bool firstClick = true;
         int workTime = 0;
         //Set cards as fish or leaves: x2 for fish, x1 for leaves
-        String set = "x2";
+        String set = "x1";
         //Keeps track of original card position
         double startX;
         double startY;
@@ -75,7 +75,7 @@ namespace TobiiTesting
         Point dot = new Point();
         double fixationStart = 0;
         bool fixStart = true;
-        int trackerIndex = 0;
+        bool fixShift = false;
 
         EyeXHost eyeXHost = new EyeXHost();
 
@@ -97,7 +97,6 @@ namespace TobiiTesting
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
-            dispatcherTimer.Start();
             shuffleCards();
 
             cards_arr = new int[5] {6,7,8,9,10};
@@ -125,9 +124,9 @@ namespace TobiiTesting
                 fixationStart = e.Timestamp;
             }
             double fixationtime = e.Timestamp - fixationStart;
-            if (fixationtime > 1000 & fixStart) {
+            if (fixationtime > 600 & fixStart) {
                 dot = new Point(e.X,e.Y);
-                trackerIndex = (trackerIndex + 1) % 2;
+                fixShift = true;
                 fixStart = false;
             }
 
@@ -144,8 +143,6 @@ namespace TobiiTesting
 
         public string Message { get; private set; }
 
-        
-
         private void shuffleCards() {
             Rectangle rect;
             foreach (UIElement child in canvas.Children)
@@ -157,6 +154,10 @@ namespace TobiiTesting
                         Canvas.SetTop(rect, -200);
                         Canvas.SetLeft(rect, -200);
                     }
+                    else
+                    {
+                        Panel.SetZIndex(rect, (int)Canvas.GetTop(rect) / 100);
+                    }
                 }
             }
         }
@@ -165,8 +166,7 @@ namespace TobiiTesting
         {
             if (firstClick) {
                 firstClick = false;
-                
-
+                dispatcherTimer.Start();
             }
             Rectangle obj = sender as Rectangle;
             lastClicked = obj;
@@ -273,7 +273,7 @@ namespace TobiiTesting
             }
         }
         
-        void update(object sender, EventArgs e) //sender/receiver
+        void update(object sender, EventArgs e)
         {
             if (!firstClick) {
                 sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString();
@@ -310,23 +310,22 @@ namespace TobiiTesting
                 Canvas.SetTop(partnerClicked, top_coord);
             }
 
-            Ellipse tracker = FindName("track" + trackerIndex.ToString()) as Ellipse;
-            Canvas.SetLeft(tracker, dot.X);
-            Canvas.SetTop(tracker, dot.Y);
-
-            if (trackerIndex == 0)
+            if (fixShift)
             {
+                Canvas.SetLeft(track1, Canvas.GetLeft(track0));
+                Canvas.SetTop(track1, Canvas.GetTop(track0));
+                Canvas.SetLeft(track0, dot.X);
+                Canvas.SetTop(track0, dot.Y);
                 trackLine.X1 = dot.X + 10;
                 trackLine.Y1 = dot.Y + 10;
-            }
-            else
-            {
-                trackLine.X2 = dot.X + 10;
-                trackLine.Y2 = dot.Y + 10;
+                trackLine.X2 = Canvas.GetLeft(track1) + 10;
+                trackLine.Y2 = Canvas.GetTop(track1) + 10;
+                fixShift = false;
             }
 
             updateWorkTime();
         }
+
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             //CleanUp();
