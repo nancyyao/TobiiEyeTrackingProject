@@ -56,18 +56,20 @@ namespace TobiiTesting
         private static String sending;
         private static String received;
 
-        int left_coord, top_coord, start_ind, middle_ind;
+        int left_coord, top_coord, start_ind, middle_ind, last_ind;
 
         //UI
         bool drag = false; //True when card is being moved
         int score = 0;
+        int otherScore = 0;
+        int masterScore = 0;
         int endscore = 0;
         //Timer
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         bool firstClick = true;
         int workTime = 0;
         //Set cards as fish or leaves: x2 for fish, x1 for leaves
-        String set = "x1";
+        String set = "x2";
         //Keeps track of original card position
         double startX;
         double startY;
@@ -251,7 +253,6 @@ namespace TobiiTesting
                         }
                     }
                 }
-                scr.Text = "Score: " + score;
             }
             drag = !drag;
         }
@@ -300,7 +301,7 @@ namespace TobiiTesting
         void update(object sender, EventArgs e)
         {
             if (!firstClick) {
-                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString();
+                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString() + "!" + score.ToString();
             }
 
             //If user pressed Receiver or Cursor button but communication haven't started yet or has terminated, start a thread on tryCommunicateReceiver()
@@ -328,8 +329,10 @@ namespace TobiiTesting
                 Rectangle partnerClicked = FindName(received.Substring(0, 4)) as Rectangle;
                 start_ind = received.IndexOf(":");
                 middle_ind = received.IndexOf("|");
+                last_ind = received.IndexOf("!");
                 left_coord = Convert.ToInt32(received.Substring(start_ind + 1, middle_ind - start_ind - 1));
-                top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, received.Length - middle_ind - 1));
+                top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, last_ind - middle_ind - 1));
+                otherScore = Convert.ToInt32(received.Substring(last_ind + 1, received.Length - last_ind - 1));
                 Canvas.SetLeft(partnerClicked,  left_coord);
                 Canvas.SetTop(partnerClicked, top_coord);
             }
@@ -348,6 +351,8 @@ namespace TobiiTesting
             }
 
             updateWorkTime();
+            masterScore = score + otherScore;
+            scr.Text = "Score: " + masterScore;
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
