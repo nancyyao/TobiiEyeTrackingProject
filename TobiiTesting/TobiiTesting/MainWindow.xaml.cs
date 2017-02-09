@@ -51,8 +51,6 @@ namespace TobiiTesting
         private static string NumPat = @"(\d+)\s+";
         private Regex regex_num = new Regex(NumPat, RegexOptions.IgnoreCase);
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
-        private static int[] cards_arr;
-        private static int[] received_cards_arr = {2,3,4,5,6};
         private static String sending;
         private static String received;
 
@@ -68,8 +66,7 @@ namespace TobiiTesting
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         bool firstClick = true;
         int workTime = 0;
-        //Set cards as fish or leaves: x2 for fish, x1 for leaves
-        String set = "x2";
+
         //Keeps track of original card position
         double startX;
         double startY;
@@ -80,8 +77,10 @@ namespace TobiiTesting
         bool fixShift = false;
 
         EyeXHost eyeXHost = new EyeXHost();
-
         Rectangle lastClicked;
+
+        //SET BEFORE RUNNING
+        String set = "x2"; //set cards as fish or leaves: x2 for fish, x1 for leaves
         private bool highlightVis = false; //set before running; if true: show highlight visualization; if false: show fixation visualization
         #endregion
 
@@ -90,16 +89,7 @@ namespace TobiiTesting
             DataContext = this;
             InitializeComponent();
             Message = string.Empty;
-
-            //set up correct visualization
-            highlight = highlightVis;
-            if (highlight)
-            {
-                VisSwitchButton.Content = "Switch to fixation";
-            } else
-            {
-                VisSwitchButton.Content = "Switch to highlight";
-            }
+            beginSetUp();
 
             eyeXHost.Start();
             //var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
@@ -110,7 +100,7 @@ namespace TobiiTesting
             //  DispatcherTimer setup
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             shuffleCards();
 
             if (ReceiverOn)
@@ -126,6 +116,27 @@ namespace TobiiTesting
                 Share_Status_Text.Text = "Sharing Data to\nIP:" + SenderIP.ToString();
                 Share_Status_Text.Visibility = Visibility.Visible;
                 communication_started_Sender = false;
+            }
+        }
+        private void beginSetUp()
+        {
+            highlight = highlightVis;
+            if (highlight)
+            {
+                VisSwitchButton.Content = "Switch to fixation";
+            }
+            else
+            {
+                VisSwitchButton.Content = "Switch to highlight";
+            }
+            if (set == "x1") //leaves
+            {
+                CategoryA.Text = "Poison Ivy";
+                CategoryB.Text = "Poison Oak";
+            } else //fish
+            {
+                CategoryA.Text = "Butterflyfish";
+                CategoryB.Text = "Angelfish";
             }
         }
         private void fixTrack(object s, EyeXFramework.FixationEventArgs e)
