@@ -23,15 +23,15 @@ using System.Net.Sockets;
 using System.IO;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace TobiiTesting
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    /// 
-    
-    public partial class MainWindow : Window
+    ///     
+    public partial class MainWindow : INotifyPropertyChanged
     {
         #region Variables
         //send/receive
@@ -84,6 +84,7 @@ namespace TobiiTesting
 
         public MainWindow()
         {
+            DataContext = this;
             InitializeComponent();
             Message = string.Empty;
 
@@ -97,10 +98,8 @@ namespace TobiiTesting
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
             dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
-            dispatcherTimer.Start();
+            
             shuffleCards();
-
-            cards_arr = new int[5] {6,7,8,9,10};
 
             if (ReceiverOn)
             {
@@ -144,7 +143,29 @@ namespace TobiiTesting
 
         public string Message { get; private set; }
 
-        
+        #region gaze sharing on/off
+        public event PropertyChangedEventHandler PropertyChanged = delegate { };
+        public bool gazeSharing { get; set; }
+        private void gazeButton(object sender, RoutedEventArgs e)
+        {
+            gazeSharing = !gazeSharing;
+            OnPropertyChanged("gazeSharing");
+            if (gazeSharing)
+            {
+                //make fixation spots visible
+                Button.Content = "Turn off gaze";
+            }
+            else
+            {
+                //make fixation spots hidden
+                Button.Content = "Show gaze";
+            }
+        }
+        protected void OnPropertyChanged(string property)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(property));
+        }
+        #endregion
 
         private void shuffleCards() {
             Rectangle rect;
@@ -165,7 +186,7 @@ namespace TobiiTesting
         {
             if (firstClick) {
                 firstClick = false;
-                
+                dispatcherTimer.Start();
 
             }
             Rectangle obj = sender as Rectangle;

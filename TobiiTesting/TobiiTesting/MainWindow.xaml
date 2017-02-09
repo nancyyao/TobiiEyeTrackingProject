@@ -14,14 +14,26 @@
             <Setter Property="Stroke" Value="Black"></Setter>
             <Setter Property="StrokeThickness" Value="1"></Setter>
             <Style.Triggers>
-                <Trigger Property="eyeX:Behavior.HasGaze" Value="True">
-                    <!--<Setter Property="Stroke" Value="Black" />-->
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=(eyeX:Behavior.HasGaze)}"  Value="True"/>
+                        <Condition Binding="{Binding Path=gazeSharing}" Value="True" />
+                    </MultiDataTrigger.Conditions>
+                    <MultiDataTrigger.Setters>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect BlurRadius="35" Color="DarkGoldenrod" ShadowDepth="0"/>
+                            </Setter.Value>
+                        </Setter>
+                    </MultiDataTrigger.Setters>
+                </MultiDataTrigger>
+                <!--<Trigger Property="eyeX:Behavior.HasGaze" Value="True">
                     <Setter Property="Effect">
                         <Setter.Value>
                             <DropShadowEffect BlurRadius="35" Color="DarkGoldenrod" ShadowDepth="0"/>
                         </Setter.Value>
                     </Setter>
-                </Trigger>
+                </Trigger>-->
             </Style.Triggers>
         </Style>
     </Window.Resources>
@@ -40,7 +52,17 @@
         <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
         <TextBlock Panel.ZIndex="54" Name="CategoryA" Canvas.Left="30" Canvas.Top="470" FontSize="18">Category A</TextBlock>
         <TextBlock Panel.ZIndex="54" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category B</TextBlock>
-
+        <Button x:Name="Button"
+                Panel.ZIndex="57"
+                Content="Show Gaze"
+                Canvas.Right="30"
+                Canvas.Top="130"
+                HorizontalAlignment="Center"
+                Margin="10,10,0,0"
+                VerticalAlignment="Top"
+                Width="75"
+                Click="gazeButton"/>
+        
         <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="0" Canvas.Top ="0">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>
