@@ -43,15 +43,14 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "10.105.132.82"; //The default IP for sending messages.
-                                                                   //SenderIP = 129.105.146.201, 10.105.91.168
+        private static string defaultSenderIP = "129.105.146.121"; //The default IP for sending messages.
+                                                                   //SenderIP = 129.105.146.121, 10.105.91.168
                                                                    // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
         private Regex r = new Regex(IPpat, RegexOptions.IgnoreCase);//regular expression variable
         private static string NumPat = @"(\d+)\s+";
         private Regex regex_num = new Regex(NumPat, RegexOptions.IgnoreCase);
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
-        private static int[] cards_arr;
         private static int[] received_cards_arr = {2,3,4,5,6};
         private static String sending;
         private static String received;
@@ -70,6 +69,7 @@ namespace TobiiTesting
         int workTime = 0;
         //Set cards as fish or leaves: x2 for fish, x1 for leaves
         String set = "x2";
+        bool splitcards = true; //divide cards in middle
         //Keeps track of original card position
         double startX;
         double startY;
@@ -110,7 +110,7 @@ namespace TobiiTesting
             //  DispatcherTimer setup
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             shuffleCards();
 
             if (ReceiverOn)
@@ -210,6 +210,7 @@ namespace TobiiTesting
 
         private void shuffleCards() {
             Rectangle rect;
+            double left;
             foreach (UIElement child in canvas.Children)
             {
                 if (Canvas.GetZIndex(child) < 50) {
@@ -222,6 +223,18 @@ namespace TobiiTesting
                     else
                     {
                         Panel.SetZIndex(rect, (int)Canvas.GetTop(rect) / 100);
+                        left = Canvas.GetLeft(rect);
+                        if (splitcards && left > 450 && left < 800)
+                        {
+                            if (left - 700 > 0)
+                            {
+                                Canvas.SetLeft(rect, 800);
+                            }
+                            else
+                            {
+                                Canvas.SetLeft(rect, 450);
+                            }
+                        }
                     }
                 }
             }
@@ -372,7 +385,7 @@ namespace TobiiTesting
                 left_coord = Convert.ToInt32(received.Substring(start_ind + 1, middle_ind - start_ind - 1));
                 top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, last_ind - middle_ind - 1));
                 otherScore = Convert.ToInt32(received.Substring(last_ind + 1, received.Length - last_ind - 1));
-                Canvas.SetLeft(partnerClicked,  left_coord);
+                Canvas.SetLeft(partnerClicked, left_coord);
                 Canvas.SetTop(partnerClicked, top_coord);
             }
 
@@ -393,6 +406,8 @@ namespace TobiiTesting
             masterScore = score + otherScore;
             scr.Text = "Score: " + masterScore;
         }
+
+        
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
