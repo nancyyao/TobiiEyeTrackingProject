@@ -11,7 +11,7 @@
         </Style>
 
         <Style x:Key="EyeXGazeAwarePanel" BasedOn="{StaticResource EyeXGazeAwareElement}" TargetType="Rectangle">
-            <Setter Property="Stroke" Value="White"></Setter>
+            <Setter Property="Stroke" Value="LightGray"></Setter>
             <Setter Property="StrokeThickness" Value="1"></Setter>
             <Style.Triggers>
                 <MultiDataTrigger>
@@ -23,7 +23,7 @@
                     <MultiDataTrigger.Setters>
                         <Setter Property="Effect">
                             <Setter.Value>
-                                <DropShadowEffect BlurRadius="35" Color="DarkGoldenrod" ShadowDepth="0"/>
+                                <DropShadowEffect BlurRadius="35" Color="Yellow" ShadowDepth="0"/>
                             </Setter.Value>
                         </Setter>
                     </MultiDataTrigger.Setters>
@@ -41,18 +41,18 @@
 
     <Canvas Name="canvas">
         <Ellipse Name="track0" Opacity=".7" Panel.ZIndex="60" Fill="Purple" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
-        <Ellipse Name="track1" Opacity=".7" Panel.ZIndex="60" Fill="Black" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
-        <Line Name="trackLine" Panel.ZIndex="60" Stroke="Black" StrokeThickness="1" X1="0" X2="0" Y1="0" Y2="0" Visibility="Hidden"></Line>
-        <Rectangle  Panel.ZIndex="50" Name="background" Width="1920" Height="1080"></Rectangle>
-        <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="Black" StrokeThickness="3"></Line>
-        <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="Black" StrokeThickness="3"></Line>
-        <TextBlock Panel.ZIndex="51" Name="scr" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
-        <TextBlock Panel.ZIndex="52" Name="time" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
+        <Ellipse Name="track1" Opacity=".7" Panel.ZIndex="60" Fill="White" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
+        <Line Name="trackLine" Opacity=".7" Panel.ZIndex="60" Stroke="White" StrokeThickness="1" X1="0" X2="0" Y1="0" Y2="0" Visibility="Hidden"></Line>
+        <Rectangle Panel.ZIndex="-1" Fill="Black" Name="background" Width="1920" Height="1080"></Rectangle>
+        <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="White" StrokeThickness="3"></Line>
+        <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="White" StrokeThickness="3"></Line>
+        <TextBlock Panel.ZIndex="51" Name="scr" Foreground="White" Canvas.Left="30" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Score: 0</TextBlock>
+        <TextBlock Panel.ZIndex="52" Name="time" Foreground="White" Canvas.Left="250" Canvas.Top="30" HorizontalAlignment="Left" FontSize="40">Time: 0</TextBlock>
         <TextBlock Panel.ZIndex="59" Name="test" Canvas.Left="500" Canvas.Top="500"></TextBlock>
-        <TextBlock Panel.ZIndex="53" Name="Receive_Status_Text" Canvas.Right="30" Canvas.Top="30" MaxWidth="266.67" Text="Receiving Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
-        <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
-        <TextBlock Panel.ZIndex="54" Name="CategoryA" Canvas.Left="585" Canvas.Top="470" FontSize="18">Category A</TextBlock>
-        <TextBlock Panel.ZIndex="54" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category B</TextBlock>
+        <TextBlock Panel.ZIndex="53" Name="Receive_Status_Text" Foreground="White" Canvas.Right="30" Canvas.Top="30" MaxWidth="266.67" Text="Receiving Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
+        <TextBlock Panel.ZIndex="53" Name="Share_Status_Text" Foreground="White" Canvas.Right="30" Canvas.Top="80" MaxWidth="266.67" Text="Sharing Data" TextAlignment="Right" FontSize="18" HorizontalAlignment="Center" Visibility="Visible"/>
+        <TextBlock Panel.ZIndex="54" HorizontalAlignment="Center" Foreground="White" Name="CategoryA" Canvas.Left="580" Canvas.Top="470" FontSize="18">Category A</TextBlock>
+        <TextBlock Panel.ZIndex="54" HorizontalAlignment="Center" Foreground="White" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category A</TextBlock>
         <Button x:Name="GazeSwitchButton"
                 Panel.ZIndex="57"
                 Content="Show Gaze"
@@ -71,6 +71,7 @@
                 HorizontalAlignment="Center"
                 Margin="10,10,0,0"
                 VerticalAlignment="Top"
+                Visibility="Hidden"
                 Click="visButton"/>
 
             <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1046" Canvas.Top ="60">
@@ -106,6 +107,11 @@
         <Rectangle Name="x117" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="60" Canvas.Left="743">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy7.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x118" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="80" Canvas.Left="600">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="PoisonIvy8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x121" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="256" Canvas.Top ="80">

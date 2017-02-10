@@ -34,6 +34,14 @@ namespace TobiiTesting
     public partial class MainWindow : INotifyPropertyChanged
     {
         #region Variables
+
+        //SETTINGS//
+        String set = "x1"; //x2 for fish, x1 for leaves
+        bool splitcards = false; //true to divide cards in middle
+        private bool highlightVis = false; //true: show highlight visualization; false: show fixation visualization
+        //SETTINGS//
+
+
         //send/receive
         private bool SenderOn = true;
         private bool ReceiverOn = true;
@@ -51,7 +59,6 @@ namespace TobiiTesting
         private static string NumPat = @"(\d+)\s+";
         private Regex regex_num = new Regex(NumPat, RegexOptions.IgnoreCase);
         private System.Windows.Threading.DispatcherTimer dispatcherTimer;
-        private static int[] received_cards_arr = {2,3,4,5,6};
         private static String sending;
         private static String received;
 
@@ -67,22 +74,22 @@ namespace TobiiTesting
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         bool firstClick = true;
         int workTime = 0;
-        //Set cards as fish or leaves: x2 for fish, x1 for leaves
-        String set = "x2";
-        bool splitcards = true; //divide cards in middle
+
         //Keeps track of original card position
         double startX;
         double startY;
 
         Point dot = new Point(0,0);
+        Point fastTrack = new Point(0, 0);
         double fixationStart = 0;
         bool fixStart = true;
         bool fixShift = false;
 
+        double fadeTimer = 0;
+
         EyeXHost eyeXHost = new EyeXHost();
 
         Rectangle lastClicked;
-        private bool highlightVis = false; //set before running; if true: show highlight visualization; if false: show fixation visualization
         #endregion
 
         public MainWindow()
@@ -104,13 +111,14 @@ namespace TobiiTesting
             eyeXHost.Start();
             //var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             var fixationData = eyeXHost.CreateFixationDataStream(FixationDataMode.Sensitive);
+            var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
             fixationData.Next += fixTrack;
-            //gazeData.Next += trackDot;
+            gazeData.Next += trackDot;
 
             //  DispatcherTimer setup
             dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += new EventHandler(update);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
             shuffleCards();
 
             if (ReceiverOn)
@@ -128,6 +136,7 @@ namespace TobiiTesting
                 communication_started_Sender = false;
             }
         }
+
         private void fixTrack(object s, EyeXFramework.FixationEventArgs e)
         {
             if (e.EventType == FixationDataEventType.Begin)
@@ -135,7 +144,7 @@ namespace TobiiTesting
                 fixationStart = e.Timestamp;
             }
             double fixationtime = e.Timestamp - fixationStart;
-            if (fixationtime > 600 & fixStart) {
+            if (fixationtime > 700 & fixStart) {
                 dot = new Point(e.X,e.Y);
                 fixShift = true;
                 fixStart = false;
@@ -149,7 +158,7 @@ namespace TobiiTesting
 
         private void trackDot(object s, EyeXFramework.GazePointEventArgs e)
         {
-            //dot = new Point(e.X, e.Y);
+            fastTrack = new Point(e.X, e.Y);
         }
 
         public string Message { get; private set; }
@@ -211,11 +220,21 @@ namespace TobiiTesting
         private void shuffleCards() {
             Rectangle rect;
             double left;
+
+            if (set.CompareTo("x1") == 0)
+            {
+                CategoryA.Text = "Poison Ivy";
+                CategoryB.Text = "Poison Oak";
+            }
+            else {
+                CategoryA.Text = "Butterflyfish";
+                CategoryB.Text = "Angelfish";
+            }
             foreach (UIElement child in canvas.Children)
             {
                 if (Canvas.GetZIndex(child) < 50) {
                     rect = child as Rectangle;
-                    if (rect.Name.Substring(0, 2).CompareTo(set) != 0)
+                    if (rect.Name.Substring(0, 2).CompareTo(set) != 0 & rect.Name.CompareTo("background") != 0)
                     {
                         Canvas.SetTop(rect, -200);
                         Canvas.SetLeft(rect, -200);
@@ -311,12 +330,10 @@ namespace TobiiTesting
         
         private void StackPanel_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            Rectangle over = sender as Rectangle;
-            
             if (drag)
             {
-                Canvas.SetLeft(over, e.GetPosition(background).X - over.Width/2);
-                Canvas.SetTop(over, e.GetPosition(background).Y - over.Height/2);
+                Canvas.SetLeft(lastClicked, e.GetPosition(background).X - lastClicked.Width/2);
+                Canvas.SetTop(lastClicked, e.GetPosition(background).Y - lastClicked.Height/2);
             }
         }
 
@@ -354,6 +371,10 @@ namespace TobiiTesting
         {
             if (!firstClick) {
                 sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString() + "!" + score.ToString();
+                if (drag) {
+                    Canvas.SetLeft(lastClicked, Mouse.GetPosition(background).X - lastClicked.Width / 2);
+                    Canvas.SetTop(lastClicked, Mouse.GetPosition(background).Y - lastClicked.Height / 2);
+                }
             }
 
             //If user pressed Receiver or Cursor button but communication haven't started yet or has terminated, start a thread on tryCommunicateReceiver()
@@ -389,18 +410,29 @@ namespace TobiiTesting
                 Canvas.SetTop(partnerClicked, top_coord);
             }
 
-            if (fixShift)
+            if (fixShift & dot.X != double.NaN & dot.Y != double.NaN)
             {
-                Canvas.SetLeft(track1, Canvas.GetLeft(track0));
-                Canvas.SetTop(track1, Canvas.GetTop(track0));
+                //Canvas.SetLeft(track1, Canvas.GetLeft(track0));
+                //Canvas.SetTop(track1, Canvas.GetTop(track0));
                 Canvas.SetLeft(track0, dot.X);
                 Canvas.SetTop(track0, dot.Y);
                 trackLine.X1 = dot.X + 10;
                 trackLine.Y1 = dot.Y + 10;
-                trackLine.X2 = Canvas.GetLeft(track1) + 10;
-                trackLine.Y2 = Canvas.GetTop(track1) + 10;
+                fadeTimer = 150;
+                //trackLine.X2 = Canvas.GetLeft(track1) + 10;
+                //trackLine.Y2 = Canvas.GetTop(track1) + 10;
                 fixShift = false;
+
             }
+            track0.Opacity = fadeTimer / 150;
+            trackLine.Opacity = fadeTimer / 150;
+            fadeTimer--;
+            double left = Canvas.GetLeft(track1);
+            double top = Canvas.GetTop(track1);
+            Canvas.SetLeft(track1, (fastTrack.X - left)/1.3 + left);
+            Canvas.SetTop(track1, (fastTrack.Y - top)/1.3 + top);
+            trackLine.X2 = Canvas.GetLeft(track1) + 10;
+            trackLine.Y2 = Canvas.GetTop(track1) + 10;
 
             updateWorkTime();
             masterScore = score + otherScore;
