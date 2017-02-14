@@ -37,7 +37,7 @@ namespace TobiiTesting
 
         //SETTINGS//
         String set = "x1"; //x2 for fish, x1 for leaves
-        bool splitcards = false; //true to divide cards in middle
+        bool splitcards = true; //true to divide cards in middle
         private bool highlightVis = false; //true: show highlight visualization; false: show fixation visualization
         //SETTINGS//
 
@@ -62,7 +62,7 @@ namespace TobiiTesting
         private static String sending;
         private static String received;
 
-        int left_coord, top_coord, start_ind, middle_ind, last_ind;
+        int left_coord, top_coord, ind_1, ind_2, ind_3, ind_4;
 
         //UI
         bool drag = false; //True when card is being moved
@@ -70,6 +70,7 @@ namespace TobiiTesting
         int otherScore = 0;
         int masterScore = 0;
         int endscore = 0;
+        int otherEndScore = 0;
         //Timer
         int lastTime = DateTime.Now.TimeOfDay.Seconds;
         bool firstClick = true;
@@ -79,7 +80,7 @@ namespace TobiiTesting
         double startX;
         double startY;
 
-        Point dot = new Point(0,0);
+        Point fixationTrack = new Point(0,0);
         Point fastTrack = new Point(0, 0);
         double fixationStart = 0;
         bool fixStart = true;
@@ -88,7 +89,6 @@ namespace TobiiTesting
         double fadeTimer = 0;
 
         EyeXHost eyeXHost = new EyeXHost();
-
         Rectangle lastClicked;
         #endregion
 
@@ -97,16 +97,7 @@ namespace TobiiTesting
             DataContext = this;
             InitializeComponent();
             Message = string.Empty;
-
-            //set up correct visualization
-            highlight = highlightVis;
-            if (highlight)
-            {
-                VisSwitchButton.Content = "Switch to fixation";
-            } else
-            {
-                VisSwitchButton.Content = "Switch to highlight";
-            }
+            beginSetUp();
 
             eyeXHost.Start();
             //var gazeData = eyeXHost.CreateGazePointDataStream(GazePointDataMode.LightlyFiltered);
@@ -116,9 +107,9 @@ namespace TobiiTesting
             gazeData.Next += trackDot;
 
             //  DispatcherTimer setup
-            dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
+            dispatcherTimer = new System.Windows.Threading.DispatcherTimer(System.Windows.Threading.DispatcherPriority.Render);
             dispatcherTimer.Tick += new EventHandler(update);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 25);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 0, 0, 20);
             shuffleCards();
 
             if (ReceiverOn)
@@ -137,6 +128,28 @@ namespace TobiiTesting
             }
         }
 
+        private void beginSetUp()
+        {
+            highlight = highlightVis;
+            if (highlight)
+            {
+                VisSwitchButton.Content = "Switch to fixation";
+            }
+            else
+            {
+                VisSwitchButton.Content = "Switch to highlight";
+            }
+            if (set == "x1") //leaves
+            {
+                CategoryA.Text = "Poison Ivy";
+                CategoryB.Text = "Poison Oak";
+            } else //fish
+            {
+                CategoryA.Text = "Butterflyfish";
+                CategoryB.Text = "Angelfish";
+            }
+        }
+
         private void fixTrack(object s, EyeXFramework.FixationEventArgs e)
         {
             if (e.EventType == FixationDataEventType.Begin)
@@ -145,7 +158,7 @@ namespace TobiiTesting
             }
             double fixationtime = e.Timestamp - fixationStart;
             if (fixationtime > 700 & fixStart) {
-                dot = new Point(e.X,e.Y);
+                fixationTrack = new Point(e.X,e.Y);
                 fixShift = true;
                 fixStart = false;
             }
@@ -360,7 +373,7 @@ namespace TobiiTesting
             {
                 time.Text = "Time: " + workTime / 60 + ":" + workTime % 60;
             }
-            if (endscore == 16)
+            if (endscore + otherEndScore == 16)
             {
                 background.Fill = new SolidColorBrush(System.Windows.Media.Colors.LimeGreen);
                 Canvas.SetZIndex(background, 0);
@@ -370,7 +383,7 @@ namespace TobiiTesting
         void update(object sender, EventArgs e)
         {
             if (!firstClick) {
-                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString() + "!" + score.ToString();
+                sending = lastClicked.Name + ":" + Canvas.GetLeft(lastClicked).ToString() + "|" + Canvas.GetTop(lastClicked).ToString() + "!" + score.ToString() + "(" + endscore.ToString();
                 if (drag) {
                     Canvas.SetLeft(lastClicked, Mouse.GetPosition(background).X - lastClicked.Width / 2);
                     Canvas.SetTop(lastClicked, Mouse.GetPosition(background).Y - lastClicked.Height / 2);
@@ -400,30 +413,34 @@ namespace TobiiTesting
                 Console.WriteLine(received);
                 test.Text = received.ToString();
                 Rectangle partnerClicked = FindName(received.Substring(0, 4)) as Rectangle;
-                start_ind = received.IndexOf(":");
-                middle_ind = received.IndexOf("|");
-                last_ind = received.IndexOf("!");
-                left_coord = Convert.ToInt32(received.Substring(start_ind + 1, middle_ind - start_ind - 1));
-                top_coord = Convert.ToInt32(received.Substring(middle_ind + 1, last_ind - middle_ind - 1));
-                otherScore = Convert.ToInt32(received.Substring(last_ind + 1, received.Length - last_ind - 1));
+                ind_1 = received.IndexOf(":");
+                ind_2 = received.IndexOf("|");
+                ind_3 = received.IndexOf("!");
+                ind_4 = received.IndexOf("(");
+                left_coord = Convert.ToInt32(received.Substring(ind_1 + 1, ind_2 - ind_1 - 1));
+                top_coord = Convert.ToInt32(received.Substring(ind_2 + 1, ind_3 - ind_2 - 1));
+                otherScore = Convert.ToInt32(received.Substring(ind_3 + 1, ind_4 - ind_3 - 1));
+                otherEndScore = Convert.ToInt32(received.Substring(ind_4 + 1, received.Length - ind_4 - 1));
                 Canvas.SetLeft(partnerClicked, left_coord);
                 Canvas.SetTop(partnerClicked, top_coord);
             }
-
-            if (fixShift & dot.X != double.NaN & dot.Y != double.NaN)
+            
+            if (fixShift & fixationTrack.X != double.NaN & fixationTrack.Y != double.NaN)
             {
+                fixationTrack = PointFromScreen(fixationTrack);
                 //Canvas.SetLeft(track1, Canvas.GetLeft(track0));
                 //Canvas.SetTop(track1, Canvas.GetTop(track0));
-                Canvas.SetLeft(track0, dot.X);
-                Canvas.SetTop(track0, dot.Y);
-                trackLine.X1 = dot.X + 10;
-                trackLine.Y1 = dot.Y + 10;
+                Canvas.SetLeft(track0, fixationTrack.X);
+                Canvas.SetTop(track0, fixationTrack.Y);
+                trackLine.X1 = fixationTrack.X + 10;
+                trackLine.Y1 = fixationTrack.Y + 10;
                 fadeTimer = 150;
                 //trackLine.X2 = Canvas.GetLeft(track1) + 10;
                 //trackLine.Y2 = Canvas.GetTop(track1) + 10;
                 fixShift = false;
 
             }
+            fastTrack = PointFromScreen(fastTrack);
             track0.Opacity = fadeTimer / 150;
             trackLine.Opacity = fadeTimer / 150;
             fadeTimer--;
