@@ -76,253 +76,253 @@
 
         <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1046" Canvas.Top ="60">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x112" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="130" Canvas.Top ="110">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x113" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="78" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x114" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="110" Canvas.Left="1043">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x115" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="170" Canvas.Left="623">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x116" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="190" Canvas.Left="812">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy6.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy6.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x117" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="60" Canvas.Left="743">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy7.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy7.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x118" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="80" Canvas.Left="600">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonIvy8.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonIvy8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x121" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="256" Canvas.Top ="80">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x122" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="306" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x123" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="253" Canvas.Left="1008">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x124" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="40" Canvas.Left="921">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x125" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="183" Canvas.Top ="253">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x126" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="291" Canvas.Left="743">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak6.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak6.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x127" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="456" Canvas.Top ="60">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak7.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak7.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x128" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="290" Canvas.Left="1133">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="PoisonOak8.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/PoisonOak8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x131" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="110" Canvas.Left="556">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Other1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/Other1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x132" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="411" Canvas.Top ="253">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Other2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/Other2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x133" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="295" Canvas.Left="541">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Other3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/Other3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x134" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="314" Canvas.Left="858">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Other4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Leaves/Other4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x211" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="200" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x212" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="33" Canvas.Top ="245">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x213" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="333" Canvas.Top ="291">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x214" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="891" Canvas.Top ="190">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x215" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="135" Canvas.Top ="88">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x216" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="285" Canvas.Top ="140">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish6.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish6.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x217" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="355" Canvas.Top ="170">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish7.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish7.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x218" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="401" Canvas.Top ="290">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Butterflyfish8.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Butterflyfish8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x221" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="541" Canvas.Top ="253">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x222" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="468" Canvas.Top ="40">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x223" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="812" Canvas.Top ="190">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x224" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="891" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x225" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="921" Canvas.Top ="68">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x226" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1046" Canvas.Top ="170">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish6.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish6.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x227" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1013" Canvas.Top ="245">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish7.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish7.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x228" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1043" Canvas.Top ="40">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Angelfish8.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Angelfish8.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x231" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="623" Canvas.Top ="68">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="otherf1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/otherf1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x232" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="743" Canvas.Top ="245">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Otherf2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Otherf2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x233" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="743" Canvas.Top ="80">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Otherf3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Otherf3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x234" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1133" Canvas.Top ="253">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="Otherf4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/Fish/Otherf4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
 
         <Rectangle Name="x311" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="78" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Even1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Even1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x312" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="110" Canvas.Left="1043">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Even2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Even2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x313" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="170" Canvas.Left="623">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Even3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Even3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x314" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="190" Canvas.Left="812">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Even4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Even4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x315" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="60" Canvas.Left="743">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Even5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Even5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x321" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="256" Canvas.Top ="80">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Odd1.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Odd1.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x322" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="306" Canvas.Top ="295">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Odd2.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Odd2.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x323" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="253" Canvas.Left="1008">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Odd3.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Odd3.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x324" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="40" Canvas.Left="921">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Odd4.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Odd4.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
         <Rectangle Name="x325" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="183" Canvas.Top ="253">
             <Rectangle.Fill>
-                <ImageBrush ImageSource="newobjects/Odd5.jpg"></ImageBrush>
+                <ImageBrush ImageSource="resource/newobjects/Odd5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
     </Canvas>

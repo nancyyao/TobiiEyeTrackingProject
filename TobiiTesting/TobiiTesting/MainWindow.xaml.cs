@@ -36,11 +36,11 @@ namespace TobiiTesting
         #region Variables
 
         //SETTINGS//
-        String set = "x3"; //x2 for fish, x1 for leaves, x3 for lines/dots
+        String set = "x3"; //x1 for leaves, x2 for fish, x3 for lines/dots
         bool splitcards = false; //true to divide cards in middle
         private bool highlightVis = false; //true: show highlight visualization; false: show fixation visualization
+        private static string defaultSenderIP = "10.105.97.216"; //The default IP for sending messages. SenderIP = 129.105.146.138, 10.105.97.216
         //SETTINGS//
-
 
         //send/receive
         private bool SenderOn = true;
@@ -51,9 +51,6 @@ namespace TobiiTesting
         private System.Threading.Thread communicateThread_Receiver; //Thread for receiver
         private System.Threading.Thread communicateThread_Sender;   //Thread for sender
         private static string SenderIP = "", ReceiverIP = ""; //The IP's for sender and receiver.
-        private static string defaultSenderIP = "129.105.146.121"; //The default IP for sending messages.
-                                                                   //SenderIP = 129.105.146.121, 10.105.91.168
-                                                                   // private static int x_received, y_received;
         private static string IPpat = @"(\d+)(\.)(\d+)(\.)(\d+)(\.)(\d+)\s+"; // regular expression used for matching ip address
         private Regex r = new Regex(IPpat, RegexOptions.IgnoreCase);//regular expression variable
         private static string NumPat = @"(\d+)\s+";
@@ -371,7 +368,7 @@ namespace TobiiTesting
             {
                 background.Fill = new SolidColorBrush(System.Windows.Media.Colors.LimeGreen);
                 Canvas.SetZIndex(background, 0);
-                dispatcherTimer.Stop();
+                // dispatcherTimer.Stop();
             }
         }
         
