@@ -36,8 +36,8 @@ namespace TobiiTesting
         #region Variables
 
         //SETTINGS//
-        String set = "x1"; //x2 for fish, x1 for leaves
-        bool splitcards = true; //true to divide cards in middle
+        String set = "x3"; //x2 for fish, x1 for leaves, x3 for lines/dots
+        bool splitcards = false; //true to divide cards in middle
         private bool highlightVis = false; //true: show highlight visualization; false: show fixation visualization
         //SETTINGS//
 
@@ -80,7 +80,7 @@ namespace TobiiTesting
         double startX;
         double startY;
 
-        Point fixationTrack = new Point(0,0);
+        Point fixationTrack = new Point(0, 0);
         Point fastTrack = new Point(0, 0);
         double fixationStart = 0;
         bool fixStart = true;
@@ -143,10 +143,14 @@ namespace TobiiTesting
             {
                 CategoryA.Text = "Poison Ivy";
                 CategoryB.Text = "Poison Oak";
-            } else //fish
+            } else if (set == "x2") //fish
             {
                 CategoryA.Text = "Butterflyfish";
                 CategoryB.Text = "Angelfish";
+            } else
+            {
+                CategoryA.Text = "Category A";
+                CategoryB.Text = "Category B";
             }
         }
 
@@ -158,7 +162,7 @@ namespace TobiiTesting
             }
             double fixationtime = e.Timestamp - fixationStart;
             if (fixationtime > 700 & fixStart) {
-                fixationTrack = new Point(e.X,e.Y);
+                fixationTrack = new Point(e.X, e.Y);
                 fixShift = true;
                 fixStart = false;
             }
@@ -233,16 +237,6 @@ namespace TobiiTesting
         private void shuffleCards() {
             Rectangle rect;
             double left;
-
-            if (set.CompareTo("x1") == 0)
-            {
-                CategoryA.Text = "Poison Ivy";
-                CategoryB.Text = "Poison Oak";
-            }
-            else {
-                CategoryA.Text = "Butterflyfish";
-                CategoryB.Text = "Angelfish";
-            }
             foreach (UIElement child in canvas.Children)
             {
                 if (Canvas.GetZIndex(child) < 50) {
@@ -289,7 +283,7 @@ namespace TobiiTesting
                 {
                     if (Canvas.GetLeft(obj) < 700)
                     {
-                        if (obj.Name.Substring(2,1).CompareTo("1") == 1)
+                        if (obj.Name.Substring(2, 1).CompareTo("1") == 1)
                         {
                             score--;
                             endscore--;
@@ -297,7 +291,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(2,1).CompareTo("2") != 1)
+                        if (obj.Name.Substring(2, 1).CompareTo("2") != 1)
                         {
                             score--;
                             endscore--;
@@ -324,7 +318,7 @@ namespace TobiiTesting
                     }
                     else
                     {
-                        if (obj.Name.Substring(2,1).CompareTo("2") == 0)
+                        if (obj.Name.Substring(2, 1).CompareTo("2") == 0)
                         {
                             score++;
                             endscore++;
@@ -340,13 +334,13 @@ namespace TobiiTesting
             }
             drag = !drag;
         }
-        
+
         private void StackPanel_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (drag)
             {
-                Canvas.SetLeft(lastClicked, e.GetPosition(background).X - lastClicked.Width/2);
-                Canvas.SetTop(lastClicked, e.GetPosition(background).Y - lastClicked.Height/2);
+                Canvas.SetLeft(lastClicked, e.GetPosition(background).X - lastClicked.Width / 2);
+                Canvas.SetTop(lastClicked, e.GetPosition(background).Y - lastClicked.Height / 2);
             }
         }
 
@@ -373,10 +367,11 @@ namespace TobiiTesting
             {
                 time.Text = "Time: " + workTime / 60 + ":" + workTime % 60;
             }
-            if (endscore + otherEndScore == 16)
+            if ((endscore + otherEndScore == 16) || (set == "x3" && (endscore + otherEndScore == 10)))
             {
                 background.Fill = new SolidColorBrush(System.Windows.Media.Colors.LimeGreen);
                 Canvas.SetZIndex(background, 0);
+                dispatcherTimer.Stop();
             }
         }
         

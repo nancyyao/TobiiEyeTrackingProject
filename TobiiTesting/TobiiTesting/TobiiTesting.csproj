@@ -204,6 +204,16 @@
     <Resource Include="Otherf2.jpg" />
     <Resource Include="Otherf3.jpg" />
     <Resource Include="otherf4.jpg" />
+    <Resource Include="newobjects\Even1.jpg" />
+    <Resource Include="newobjects\Even2.jpg" />
+    <Resource Include="newobjects\Even3.jpg" />
+    <Resource Include="newobjects\Even4.jpg" />
+    <Resource Include="newobjects\Even5.jpg" />
+    <Resource Include="newobjects\Odd1.jpg" />
+    <Resource Include="newobjects\Odd2.jpg" />
+    <Resource Include="newobjects\Odd3.jpg" />
+    <Resource Include="newobjects\Odd4.jpg" />
+    <Resource Include="newobjects\Odd5.jpg" />
     <Content Include="Tobii.EyeX.Client.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

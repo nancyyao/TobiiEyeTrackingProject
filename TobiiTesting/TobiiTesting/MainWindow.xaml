@@ -74,7 +74,7 @@
                 Visibility="Hidden"
                 Click="visButton"/>
 
-            <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1046" Canvas.Top ="60">
+        <Rectangle Name="x111" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1046" Canvas.Top ="60">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="PoisonIvy1.jpg"></ImageBrush>
             </Rectangle.Fill>
@@ -272,6 +272,57 @@
         <Rectangle Name="x234" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="1133" Canvas.Top ="253">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Otherf4.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle Name="x311" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="78" Canvas.Top ="295">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Even1.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x312" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="110" Canvas.Left="1043">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Even2.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x313" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="170" Canvas.Left="623">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Even3.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x314" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="190" Canvas.Left="812">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Even4.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x315" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="60" Canvas.Left="743">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Even5.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x321" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="256" Canvas.Top ="80">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Odd1.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x322" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="306" Canvas.Top ="295">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Odd2.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x323" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="253" Canvas.Left="1008">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Odd3.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x324" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Top ="40" Canvas.Left="921">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Odd4.jpg"></ImageBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="x325" Panel.ZIndex="0" PreviewMouseDown="StackPanel_PreviewMouseDown" PreviewMouseMove="StackPanel_PreviewMouseMove" Width="150" Height="180" Style="{StaticResource EyeXGazeAwarePanel}" Canvas.Left="183" Canvas.Top ="253">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="newobjects/Odd5.jpg"></ImageBrush>
             </Rectangle.Fill>
         </Rectangle>
     </Canvas>

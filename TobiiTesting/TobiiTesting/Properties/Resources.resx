@@ -184,4 +184,34 @@
   <data name="PoisonOak8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resource\Leaves\Leaves\PoisonOak8.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Even1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Even1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Even2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Even2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Even3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Even3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Even4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Even4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Even5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Even5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Odd1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Odd1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Odd2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Odd2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Odd3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Odd3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Odd4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Odd4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Odd5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\newobjects\Odd5.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
