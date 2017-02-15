@@ -127,6 +127,7 @@ namespace TobiiTesting
 
         private void beginSetUp()
         {
+            gazeSharing = true;
             highlight = highlightVis;
             if (highlight)
             {
@@ -135,6 +136,9 @@ namespace TobiiTesting
             else
             {
                 VisSwitchButton.Content = "Switch to highlight";
+                track0.Visibility = Visibility.Visible;
+                track1.Visibility = Visibility.Visible;
+                trackLine.Visibility = Visibility.Visible;
             }
             if (set == "x1") //leaves
             {

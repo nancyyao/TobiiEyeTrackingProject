@@ -41,8 +41,8 @@
 
     <Canvas Name="canvas">
         <Ellipse Name="track0" Opacity=".7" Panel.ZIndex="60" Fill="Purple" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
-        <Ellipse Name="track1" Opacity=".7" Panel.ZIndex="60" Fill="White" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
-        <Line Name="trackLine" Opacity=".7" Panel.ZIndex="60" Stroke="White" StrokeThickness="1" X1="0" X2="0" Y1="0" Y2="0" Visibility="Hidden"></Line>
+        <Ellipse Name="track1" Opacity=".7" Panel.ZIndex="60" Fill="LightBlue" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0" Visibility="Hidden"></Ellipse>
+        <Line Name="trackLine" Opacity=".7" Panel.ZIndex="60" Stroke="LightBlue" StrokeThickness="1" X1="0" X2="0" Y1="0" Y2="0" Visibility="Hidden"></Line>
         <Rectangle Panel.ZIndex="-1" Fill="Black" Name="background" Width="1920" Height="1080"></Rectangle>
         <Line Panel.ZIndex="54" X1="0" X2="1920" Y1="500" Y2="500" Stroke="White" StrokeThickness="3"></Line>
         <Line Panel.ZIndex="55" X1="700" X2="700" Y1="500" Y2="1080" Stroke="White" StrokeThickness="3"></Line>
@@ -55,7 +55,7 @@
         <TextBlock Panel.ZIndex="54" HorizontalAlignment="Center" Foreground="White" Name="CategoryB" Canvas.Left="730" Canvas.Top="470" FontSize="18">Category A</TextBlock>
         <Button x:Name="GazeSwitchButton"
                 Panel.ZIndex="57"
-                Content="Show Gaze"
+                Content="Turn off gaze"
                 Canvas.Right="30"
                 Canvas.Top="130"
                 HorizontalAlignment="Center"
